@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Club — MNQ Futures Signals & Mentorship</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #080808;
+    --surface: #111111;
+    --surface2: #181818;
+    --border: rgba(255,255,255,0.08);
+    --white: #F5F5F0;
+    --white-dim: rgba(245,245,240,0.55);
+    --white-faint: rgba(245,245,240,0.15);
+    --gold: #C9A84C;
+    --gold-dim: rgba(201,168,76,0.12);
+    --gold-glow: rgba(201,168,76,0.25);
+    --green: #3DDC84;
+    --green-dim: rgba(61,220,132,0.12);
+    --red: #FF5A5A;
+    --red-dim: rgba(255,90,90,0.12);
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── TICKER ── */
+  .ticker-wrap { width:100%; background:var(--gold); overflow:hidden; padding:7px 0; }
+  .ticker { display:flex; animation:ticker 35s linear infinite; width:max-content; }
+  .ticker span {
+    font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:500;
+    color:#000; padding:0 28px; white-space:nowrap; letter-spacing:0.05em;
+  }
+  .ticker span::after { content:'·'; margin-left:28px; }
+  @keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* ── NAV ── */
+  nav {
+    position:sticky; top:0; z-index:100;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 48px;
+    background:rgba(8,8,8,0.94); backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-logo { font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:0.12em; color:var(--white); text-decoration:none; }
+  .nav-logo span { color:var(--gold); }
+  .nav-links { display:flex; align-items:center; gap:32px; }
+  .nav-links a { font-size:13px; color:var(--white-dim); text-decoration:none; letter-spacing:0.02em; transition:color 0.2s; }
+  .nav-links a:hover { color:var(--white); }
+  .nav-cta {
+    background:var(--gold); color:#000; font-size:13px; font-weight:600;
+    padding:10px 22px; text-decoration:none; letter-spacing:0.04em; transition:opacity 0.2s;
+  }
+  .nav-cta:hover { opacity:0.85; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height:100vh; display:flex; flex-direction:column;
+    align-items:center; justify-content:center;
+    text-align:center; padding:100px 24px 80px;
+    position:relative; overflow:hidden;
+  }
+  .hero::before {
+    content:''; position:absolute; inset:0;
+    background:
+      radial-gradient(ellipse 70% 55% at 50% -10%, rgba(201,168,76,0.14) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 40% at 20% 80%, rgba(61,220,132,0.05) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 40% at 80% 80%, rgba(201,168,76,0.05) 0%, transparent 60%);
+    pointer-events:none;
+  }
+  .hero-eyebrow {
+    font-family:'JetBrains Mono',monospace; font-size:11px;
+    letter-spacing:0.16em; color:var(--gold); text-transform:uppercase;
+    margin-bottom:28px; display:flex; align-items:center; gap:12px;
+  }
+  .hero-eyebrow::before, .hero-eyebrow::after {
+    content:''; display:block; width:40px; height:1px; background:var(--gold); opacity:0.4;
+  }
+  .hero-title {
+    font-family:'Bebas Neue',sans-serif;
+    font-size:clamp(68px, 13vw, 148px);
+    line-height:0.9; letter-spacing:0.02em; color:var(--white); margin-bottom:8px;
+  }
+  .hero-title .gold { color:var(--gold); }
+  .hero-subtitle {
+    font-size:clamp(15px, 2vw, 18px); color:var(--white-dim);
+    max-width:540px; margin:28px auto 52px;
+    font-weight:300; line-height:1.75;
+  }
+  .hero-proof-strip {
+    display:flex; gap:32px; justify-content:center; flex-wrap:wrap;
+    margin-bottom:52px;
+  }
+  .hero-proof-item { text-align:center; }
+  .hero-proof-num {
+    font-family:'Bebas Neue',sans-serif; font-size:40px;
+    letter-spacing:0.04em; color:var(--green); line-height:1;
+  }
+  .hero-proof-label {
+    font-family:'JetBrains Mono',monospace; font-size:10px;
+    color:var(--white-faint); letter-spacing:0.1em; text-transform:uppercase; margin-top:3px;
+  }
+  .hero-divider { width:1px; height:48px; background:var(--border); align-self:center; }
+  .hero-cta-group { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+  .btn-primary {
+    background:var(--gold); color:#000; font-size:14px; font-weight:600;
+    padding:16px 40px; text-decoration:none; letter-spacing:0.06em;
+    text-transform:uppercase; transition:all 0.2s; display:inline-block;
+  }
+  .btn-primary:hover { background:#d4b05a; transform:translateY(-1px); }
+  .btn-ghost {
+    border:1px solid var(--border); color:var(--white-dim); font-size:14px;
+    font-weight:400; padding:16px 36px; text-decoration:none;
+    letter-spacing:0.04em; transition:all 0.2s; display:inline-block;
+  }
+  .btn-ghost:hover { border-color:rgba(255,255,255,0.25); color:var(--white); }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    border-top:1px solid var(--border); border-bottom:1px solid var(--border);
+    background:var(--surface); display:grid; grid-template-columns:repeat(5,1fr);
+  }
+  .stat-item { padding:28px 20px; border-right:1px solid var(--border); text-align:center; }
+  .stat-item:last-child { border-right:none; }
+  .stat-num { font-family:'Bebas Neue',sans-serif; font-size:46px; letter-spacing:0.02em; color:var(--gold); line-height:1; margin-bottom:4px; }
+  .stat-num.green { color:var(--green); }
+  .stat-label { font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.1em; color:var(--white-dim); text-transform:uppercase; }
+  .stat-source { font-size:10px; color:rgba(201,168,76,0.45); margin-top:4px; font-family:'JetBrains Mono',monospace; }
+
+  /* ── SECTION GENERIC ── */
+  section { padding:100px 24px; }
+  .container { max-width:1100px; margin:0 auto; }
+  .section-eyebrow {
+    font-family:'JetBrains Mono',monospace; font-size:10px;
+    letter-spacing:0.16em; color:var(--gold); text-transform:uppercase; margin-bottom:16px;
+  }
+  .section-title {
+    font-family:'Bebas Neue',sans-serif;
+    font-size:clamp(38px, 6vw, 68px); line-height:1;
+    letter-spacing:0.02em; margin-bottom:20px;
+  }
+  .section-body { font-size:16px; color:var(--white-dim); max-width:560px; line-height:1.75; font-weight:300; }
+
+  /* ── PROOF ── */
+  .proof-section { background:var(--surface); border-top:1px solid var(--border); }
+  .proof-months { display:grid; grid-template-columns:1fr 1fr; gap:32px; margin-top:56px; }
+  .month-block { }
+  .month-header {
+    font-family:'JetBrains Mono',monospace; font-size:10px;
+    letter-spacing:0.14em; color:var(--white-faint); text-transform:uppercase; margin-bottom:10px;
+  }
+  .month-total {
+    font-family:'Bebas Neue',sans-serif; font-size:48px;
+    color:var(--green); letter-spacing:0.02em; line-height:1; margin-bottom:16px;
+  }
+  .cal-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:3px; }
+  .cal-head {
+    font-family:'JetBrains Mono',monospace; font-size:8px;
+    color:var(--white-faint); text-align:center; padding:3px 0; letter-spacing:0.08em;
+  }
+  .cal-day {
+    aspect-ratio:1; border-radius:3px; display:flex; flex-direction:column;
+    align-items:center; justify-content:center;
+    font-family:'JetBrains Mono',monospace; font-size:8px; font-weight:500; line-height:1.2;
+    padding:2px;
+  }
+  .cal-day.g { background:#1a4d33; color:#3DDC84; }
+  .cal-day.g-big { background:#0f6e3a; color:#3DDC84; }
+  .cal-day.r { background:#4d1a1a; color:#FF5A5A; }
+  .cal-day.r-big { background:#6e0f0f; color:#FF5A5A; }
+  .cal-day.empty { background:var(--surface2); }
+  .proof-row-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-top:32px; }
+  .proof-stat {
+    padding:18px 20px; background:var(--black); border:1px solid var(--border);
+    display:flex; flex-direction:column; gap:4px;
+  }
+  .proof-stat-key { font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--white-faint); letter-spacing:0.1em; text-transform:uppercase; }
+  .proof-stat-val { font-family:'Bebas Neue',sans-serif; font-size:32px; letter-spacing:0.04em; color:var(--gold); line-height:1; }
+  .proof-stat-val.g { color:var(--green); }
+  .proof-note { font-size:12px; color:var(--white-faint); margin-top:24px; font-family:'JetBrains Mono',monospace; letter-spacing:0.04em; line-height:1.6; }
+
+  /* ── DAILY SCHEDULE ── */
+  .schedule-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); border:1px solid var(--border); margin-top:56px; }
+  .sched-card { background:var(--surface); padding:36px 28px; }
+  .sched-time {
+    font-family:'JetBrains Mono',monospace; font-size:22px; font-weight:500;
+    color:var(--gold); letter-spacing:0.04em; margin-bottom:8px; display:block;
+  }
+  .sched-label { font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:0.12em; color:var(--white-faint); text-transform:uppercase; margin-bottom:16px; display:block; }
+  .sched-title { font-family:'Bebas Neue',sans-serif; font-size:24px; letter-spacing:0.04em; margin-bottom:10px; color:var(--white); }
+  .sched-body { font-size:13px; color:var(--white-dim); line-height:1.65; font-weight:300; }
+
+  /* ── WHAT YOU GET ── */
+  .features-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--border); border:1px solid var(--border); margin-top:56px; }
+  .feature-card { background:var(--surface); padding:32px 28px; transition:background 0.2s; }
+  .feature-card:hover { background:var(--surface2); }
+  .feature-icon { font-size:26px; margin-bottom:14px; display:block; }
+  .feature-title { font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:0.04em; margin-bottom:8px; color:var(--white); }
+  .feature-body { font-size:13px; color:var(--white-dim); line-height:1.65; font-weight:300; }
+
+  /* ── PRICING ── */
+  .pricing-wrap { display:grid; grid-template-columns:1fr 1.15fr; gap:24px; margin-top:56px; align-items:start; }
+  .plan { border:1px solid var(--border); background:var(--surface); padding:40px 36px; }
+  .plan.featured { border-color:var(--gold); background:var(--surface2); position:relative; }
+  .plan-badge {
+    position:absolute; top:-1px; left:50%; transform:translateX(-50%);
+    background:var(--gold); color:#000; font-size:10px; font-weight:600;
+    letter-spacing:0.1em; text-transform:uppercase; padding:5px 18px; white-space:nowrap;
+  }
+  .plan-name { font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.14em; color:var(--gold); text-transform:uppercase; margin-bottom:16px; }
+  .plan-price { font-family:'Bebas Neue',sans-serif; font-size:80px; line-height:1; letter-spacing:0.02em; color:var(--white); margin-bottom:4px; }
+  .plan-period { font-size:13px; color:var(--white-dim); margin-bottom:32px; }
+  .plan-features { list-style:none; display:flex; flex-direction:column; gap:12px; margin-bottom:36px; }
+  .plan-features li { font-size:14px; color:var(--white-dim); display:flex; gap:12px; align-items:flex-start; line-height:1.5; }
+  .plan-features li::before { content:'→'; color:var(--gold); flex-shrink:0; font-family:'JetBrains Mono',monospace; font-size:12px; margin-top:2px; }
+  .plan-cta {
+    display:block; text-align:center; padding:15px;
+    font-size:13px; font-weight:600; letter-spacing:0.08em;
+    text-transform:uppercase; text-decoration:none; transition:all 0.2s;
+  }
+  .plan-cta.primary { background:var(--gold); color:#000; }
+  .plan-cta.primary:hover { background:#d4b05a; }
+  .plan-cta.ghost { border:1px solid rgba(255,255,255,0.2); color:var(--white-dim); }
+  .plan-cta.ghost:hover { border-color:rgba(255,255,255,0.4); color:var(--white); }
+  .plan-divider { border:none; border-top:1px solid var(--border); margin:24px 0; }
+  .plan-includes { font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.1em; color:var(--gold); text-transform:uppercase; margin-bottom:12px; }
+
+  /* ── TESTIMONIALS ── */
+  .testi-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:56px; }
+  .testi-card { border:1px solid var(--border); background:var(--surface); padding:28px 24px 22px; position:relative; }
+  .testi-quote { font-size:13px; color:var(--white-dim); line-height:1.75; margin-bottom:20px; font-style:italic; }
+  .testi-meta { display:flex; align-items:center; gap:10px; }
+  .testi-avatar {
+    width:36px; height:36px; border-radius:50%; background:var(--gold-dim);
+    border:1px solid var(--gold); display:flex; align-items:center; justify-content:center;
+    font-family:'Bebas Neue',sans-serif; font-size:16px; color:var(--gold); flex-shrink:0;
+  }
+  .testi-name { font-size:13px; font-weight:500; color:var(--white); }
+  .testi-detail { font-size:10px; color:var(--white-faint); font-family:'JetBrains Mono',monospace; }
+  .testi-payout {
+    position:absolute; top:18px; right:18px;
+    font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:500;
+    color:var(--green); background:var(--green-dim); padding:3px 9px; border-radius:2px;
+  }
+
+  /* ── FAQ ── */
+  .faq-list { display:flex; flex-direction:column; margin-top:48px; border:1px solid var(--border); }
+  .faq-item { border-bottom:1px solid var(--border); padding:24px 28px; }
+  .faq-item:last-child { border-bottom:none; }
+  .faq-q { font-size:15px; font-weight:500; color:var(--white); margin-bottom:10px; }
+  .faq-a { font-size:14px; color:var(--white-dim); line-height:1.75; font-weight:300; }
+
+  /* ── FINAL CTA ── */
+  .final-cta {
+    background:var(--surface); border-top:1px solid var(--border);
+    text-align:center; padding:120px 24px; position:relative; overflow:hidden;
+  }
+  .final-cta::before {
+    content:''; position:absolute; inset:0;
+    background:radial-gradient(ellipse 70% 60% at 50% 50%, rgba(201,168,76,0.09) 0%, transparent 70%);
+    pointer-events:none;
+  }
+  .final-title { font-family:'Bebas Neue',sans-serif; font-size:clamp(52px, 9vw, 104px); line-height:0.92; letter-spacing:0.02em; margin-bottom:24px; }
+  .final-title span { color:var(--gold); }
+  .final-sub { font-size:16px; color:var(--white-dim); margin-bottom:48px; font-weight:300; max-width:460px; margin-left:auto; margin-right:auto; }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top:1px solid var(--border); padding:28px 48px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .footer-logo { font-family:'Bebas Neue',sans-serif; font-size:18px; letter-spacing:0.1em; color:var(--white-dim); }
+  .footer-logo span { color:var(--gold); }
+  .footer-note { font-size:11px; color:var(--white-faint); font-family:'JetBrains Mono',monospace; letter-spacing:0.04em; }
+  .footer-ig { font-size:12px; color:var(--white-dim); text-decoration:none; font-family:'JetBrains Mono',monospace; letter-spacing:0.04em; transition:color 0.2s; }
+  .footer-ig:hover { color:var(--gold); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding:16px 20px; }
+    .nav-links { display:none; }
+    .stats-bar { grid-template-columns:repeat(3,1fr); }
+    .stat-item:nth-child(3) { border-right:none; }
+    .stat-item:nth-child(4) { border-top:1px solid var(--border); }
+    .stat-item:nth-child(5) { border-top:1px solid var(--border); }
+    .proof-months { grid-template-columns:1fr; }
+    .proof-row-grid { grid-template-columns:1fr 1fr; }
+    .schedule-grid { grid-template-columns:1fr; }
+    .features-grid { grid-template-columns:1fr; }
+    .pricing-wrap { grid-template-columns:1fr; }
+    .plan.featured { order:-1; }
+    .testi-grid { grid-template-columns:1fr; }
+    footer { flex-direction:column; gap:12px; text-align:center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span>THE CLUB</span><span>+$71.5K JULY 2026</span><span>+$31.5K JUNE 2026</span><span>73.3% DAY WIN RATE</span>
+    <span>LIVE SESSIONS DAILY</span><span>MNQ FUTURES</span><span>UK GMT TIMEZONE</span>
+    <span>TRADESYNCER VERIFIED</span><span>DAILY TRADE RECAPS</span><span>FULL MENTORSHIP COURSE</span>
+    <span>+$26.2K IN ONE DAY</span><span>JOIN THE CLUB TODAY</span>
+    <span>THE CLUB</span><span>+$71.5K JULY 2026</span><span>+$31.5K JUNE 2026</span><span>73.3% DAY WIN RATE</span>
+    <span>LIVE SESSIONS DAILY</span><span>MNQ FUTURES</span><span>UK GMT TIMEZONE</span>
+    <span>TRADESYNCER VERIFIED</span><span>DAILY TRADE RECAPS</span><span>FULL MENTORSHIP COURSE</span>
+    <span>+$26.2K IN ONE DAY</span><span>JOIN THE CLUB TODAY</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">THE <span>CLUB</span></a>
+  <div class="nav-links">
+    <a href="#proof">Results</a>
+    <a href="#daily">Daily Schedule</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#faq">FAQ</a>
+  </div>
+  <a href="https://whop.com/the-club-994b?a=meanspectrea0" class="nav-cta" target="_blank">JOIN NOW</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">The Club · MNQ Futures · UK Based · GMT Timezone · Tradesyncer Verified</div>
+  <h1 class="hero-title">THIS IS WHAT<br>CONSISTENT <span class="gold">LOOKS LIKE.</span></h1>
+  <p class="hero-subtitle">Live daily sessions, real-time signals, and full mentorship from a verified funded trader. Every result is public. Every trade is transparent.</p>
+
+  <div class="hero-proof-strip">
+    <div class="hero-proof-item">
+      <div class="hero-proof-num">$71.5K</div>
+      <div class="hero-proof-label">July P&L</div>
+    </div>
+    <div class="hero-divider"></div>
+    <div class="hero-proof-item">
+      <div class="hero-proof-num">$31.5K</div>
+      <div class="hero-proof-label">June P&L</div>
+    </div>
+    <div class="hero-divider"></div>
+    <div class="hero-proof-item">
+      <div class="hero-proof-num">73.3%</div>
+      <div class="hero-proof-label">Day Win Rate</div>
+    </div>
+    <div class="hero-divider"></div>
+    <div class="hero-proof-item">
+      <div class="hero-proof-num">$26.2K</div>
+      <div class="hero-proof-label">Best Single Day</div>
+    </div>
+  </div>
+
+  <div class="hero-cta-group">
+    <a href="https://whop.com/the-club-994b?a=meanspectrea0" class="btn-primary" target="_blank">Join The Club</a>
+    <a href="#proof" class="btn-ghost">See The Stats First</a>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-num green">73.3%</div>
+    <div class="stat-label">Day Win Rate</div>
+    <div class="stat-source">55W · 20L all time</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">61%</div>
+    <div class="stat-label">Overall Win Rate</div>
+    <div class="stat-source">611W · 391L</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">2.16</div>
+    <div class="stat-label">Profit Factor</div>
+    <div class="stat-source">All time verified</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num green">$102K+</div>
+    <div class="stat-label">June + July P&L</div>
+    <div class="stat-source">Tradesyncer live data</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">GMT</div>
+    <div class="stat-label">Timezone</div>
+    <div class="stat-source">UK based · London open</div>
+  </div>
+</div>
+
+<!-- PROOF -->
+<section class="proof-section" id="proof">
+  <div class="container">
+    <div class="section-eyebrow">Verified results</div>
+    <h2 class="section-title">NO CROPS.<br>NO CHERRY PICKING.<br>FULL CALENDARS.</h2>
+    <p class="section-body">Every number below is pulled directly from Tradesyncer — connected live to the trading account. Winning days and losing days both shown. Make your own judgment.</p>
+
+    <div class="proof-months">
+      <!-- JUNE -->
+      <div class="month-block">
+        <div class="month-header">June 2026 — Tradesyncer Calendar</div>
+        <div class="month-total">+$31,500</div>
+        <div class="cal-grid">
+          <div class="cal-head">Su</div><div class="cal-head">Mo</div><div class="cal-head">Tu</div>
+          <div class="cal-head">We</div><div class="cal-head">Th</div><div class="cal-head">Fr</div><div class="cal-head">Sa</div>
+
+          <div class="cal-day empty"></div>
+          <div class="cal-day g">+$439</div>
+          <div class="cal-day g">+$973</div>
+          <div class="cal-day g">+$347</div>
+          <div class="cal-day g">+$1.6K</div>
+          <div class="cal-day g">+$1.5K</div>
+          <div class="cal-day empty"></div>
+
+          <div class="cal-day empty"></div>
+          <div class="cal-day g">+$1.7K</div>
+          <div class="cal-day g">+$362</div>
+          <div class="cal-day g">+$742</div>
+          <div class="cal-day g-big">+$6.0K</div>
+          <div class="cal-day g">+$591</div>
+          <div class="cal-day empty"></div>
+
+          <div class="cal-day empty"></div>
+          <div class="cal-day g">+$250</div>
+          <div class="cal-day g-big">+$10.9K</div>
+          <div class="cal-day g-big">+$9.6K</div>
+          <div class="cal-day g">+$2.0K</div>
+          <div class="cal-day g">+$2.0K</div>
+          <div class="cal-day empty"></div>
+
+          <div class="cal-day empty"></div>
+          <div class="cal-day g">+$3.3K</div>
+          <div class="cal-day g">+$7.6K</div>
+          <div class="cal-day r-big">-$10.0K</div>
+          <div class="cal-day g">+$4.5K</div>
+          <div class="cal-day r">-$4.0K</div>
+          <div class="cal-day empty"></div>
+
+          <div class="cal-day empty"></div>
+          <div class="cal-day empty"></div>
+          <div class="cal-day r-big">-$8.9K</div>
+          <div class="cal-day empty"></div>
+          <div class="cal-day empty"></div>
+          <div class="cal-day empty"></div>
+          <div class="cal-day empty"></div>
+        </div>
+      </div>
+
+      <!-- JULY -->
+      <div class="month-block">
+        <div class="month-header">July 2026 — Tradesyncer Calendar (ongoing)</div>
+        <div class="month-total">+$71,500</div>
+        <div class="cal-grid">
+          <div class="cal-head">Su</div><div class="cal-head">Mo</div><div class="cal-head">Tu</div>
+          <div class="cal-head">We</div><div class="cal-head">Th</div><div class="cal-head">Fr</div><div class="cal-head">Sa</div>
+
+          <div class="cal-day empty"></div>
+          <div class="cal-day empty"></div>
+          <div class="cal-day r-big">-$8.9K</div>
+          <div class="cal-day g-big">+$19.5K</div>
+          <div class="cal-day g-big">+$13.3K</div>
+          <div class="cal-day empty"></div>
+          <div class="cal-day empty"></div>
+
+          <div class="cal-day empty"></div>
+          <div class="cal-day empty"></div>
+          <div class="cal-day empty"></div>
+          <div class="cal-day g">+$1.6K</div>
+          <div class="cal-day g">+$1.5K</div>
+          <div class="cal-day g">+$40</div>
+          <div class="cal-day empty"></div>
+
+          <div class="cal-day empty"></div>
+          <div class="cal-day empty"></div>
+          <div class="cal-day g-big">+$26.2K</div>
+          <div class="cal-day g">+$445</div>
+          <div class="cal-day g">+$788</div>
+          <div class="cal-day g-big">+$8.3K</div>
+          <div class="cal-day empty"></div>
+
+          <div class="cal-day empty"></div>
+          <div class="cal-day empty"></div>
+          <div class="cal-day empty"></div>
+          <div class="cal-day empty"></div>
+          <div class="cal-day empty"></div>
+          <div class="cal-day empty"></div>
+          <div class="cal-day empty"></div>
+
+          <div class="cal-day empty"></div>
+          <div class="cal-day empty"></div>
+          <div class="cal-day empty"></div>
+          <div class="cal-day empty"></div>
+          <div class="cal-day empty"></div>
+          <div class="cal-day empty"></div>
+          <div class="cal-day empty"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="proof-row-grid">
+      <div class="proof-stat"><div class="proof-stat-key">Best Single Day</div><div class="proof-stat-val g">+$26.2K</div></div>
+      <div class="proof-stat"><div class="proof-stat-key">Best Single Week</div><div class="proof-stat-val g">+$35.7K</div></div>
+      <div class="proof-stat"><div class="proof-stat-key">Tradesyncer Score</div><div class="proof-stat-val">77/100</div></div>
+      <div class="proof-stat"><div class="proof-stat-key">Total Trades (all time)</div><div class="proof-stat-val">353</div></div>
+      <div class="proof-stat"><div class="proof-stat-key">Max Drawdown</div><div class="proof-stat-val">16.3%</div></div>
+      <div class="proof-stat"><div class="proof-stat-key">Instrument</div><div class="proof-stat-val" style="font-size:22px;letter-spacing:0.06em;">MNQ FUTURES</div></div>
+    </div>
+    <div class="proof-note">All data sourced directly from Tradesyncer — third-party verified trading journal connected to live account. Includes all winning and losing trades. Past performance is not indicative of future results.</div>
+  </div>
+</section>
+
+<!-- DAILY SCHEDULE -->
+<section id="daily">
+  <div class="container">
+    <div class="section-eyebrow">What members get daily</div>
+    <h2 class="section-title">LIVE. EVERY<br>SINGLE DAY.</h2>
+    <p class="section-body">This isn't a passive signal group. Every trading day you get three touchpoints — before the session, during, and after. You never trade blind.</p>
+    <div class="schedule-grid">
+      <div class="sched-card">
+        <span class="sched-time">Pre-Market</span>
+        <span class="sched-label">Before the London Open · GMT</span>
+        <div class="sched-title">Daily Market Outlook</div>
+        <div class="sched-body">Before every session — the key MNQ levels I'm watching, the directional bias, and what conditions need to be met before I enter. You start every day with a clear plan, not a guess.</div>
+      </div>
+      <div class="sched-card">
+        <span class="sched-time">Live</span>
+        <span class="sched-label">During the Session</span>
+        <div class="sched-title">Live Trading Sessions</div>
+        <div class="sched-body">Real-time signals — entry price, stop loss, and take profit — posted as I place them. Watch the trades unfold live. Ask questions in the group as it happens. No delays, no after-the-fact calls.</div>
+      </div>
+      <div class="sched-card">
+        <span class="sched-time">Post-Session</span>
+        <span class="sched-label">End of Day</span>
+        <div class="sched-title">Daily Trade Recap</div>
+        <div class="sched-body">Every trade broken down — what worked, what didn't, what the chart was telling me at entry and exit. This is where the real learning happens. Not just what I traded, but why.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT YOU GET -->
+<section style="background:var(--surface);border-top:1px solid var(--border);">
+  <div class="container">
+    <div class="section-eyebrow">Everything included</div>
+    <h2 class="section-title">BUILT FOR TRADERS<br>WHO ARE SERIOUS.</h2>
+    <p class="section-body">Every tier includes more than most paid programmes charge separately for.</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <span class="feature-icon">📡</span>
+        <div class="feature-title">Real-Time Signals</div>
+        <div class="feature-body">Entry, stop loss, and take profit posted before I enter. Timed around the London and US opens. GMT-based — no 3am alerts.</div>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🌅</span>
+        <div class="feature-title">Daily Market Outlook</div>
+        <div class="feature-body">Pre-session brief every trading day. Key levels, directional bias, and what I'm waiting for. Never start a session without a plan again.</div>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🎥</span>
+        <div class="feature-title">Live Trading Sessions</div>
+        <div class="feature-body">Watch me trade in real time. See the decision-making, the entries, the management. Ask questions as it happens. This is how you actually learn.</div>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">📋</span>
+        <div class="feature-title">Daily Trade Recaps</div>
+        <div class="feature-body">End-of-day breakdown of every trade — chart markup, entry reasoning, what the exit told me. The recap is where most of the education lives.</div>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">📊</span>
+        <div class="feature-title">Weekly P&L Reviews</div>
+        <div class="feature-body">Every Friday — full Tradesyncer calendar, wins, losses, what I'm adjusting for next week. Total transparency, every week without fail.</div>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🎓</span>
+        <div class="feature-title">Full Mentorship Course</div>
+        <div class="feature-body">Complete structured course covering MNQ setup, risk management, psychology, and execution. Not generic trading theory — the exact framework I use every day.</div>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">💬</span>
+        <div class="feature-title">Private Community</div>
+        <div class="feature-body">Active group of traders on the same journey. Share setups, ask questions, hold each other accountable. No spam, no noise.</div>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🇬🇧</span>
+        <div class="feature-title">UK GMT Coverage</div>
+        <div class="feature-body">Built for traders in the UK and Europe. Signals and sessions timed around hours that actually work for your timezone — not the US schedule.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="container">
+    <div class="section-eyebrow">Membership</div>
+    <h2 class="section-title">TWO WAYS IN.</h2>
+    <p class="section-body">Signals group or full 1:1 mentorship. Both include the daily sessions, signals, and course.</p>
+    <div class="pricing-wrap">
+
+      <div class="plan">
+        <div class="plan-name">The Club — Signals</div>
+        <div class="plan-price">£50</div>
+        <div class="plan-period">per month · cancel anytime</div>
+        <ul class="plan-features">
+          <li>Daily pre-market outlook — levels, bias, plan</li>
+          <li>Live real-time signals — entry, SL, TP</li>
+          <li>Live trading sessions every trading day</li>
+          <li>Daily trade recaps with chart breakdowns</li>
+          <li>Weekly P&L review every Friday</li>
+          <li>Full mentorship course included</li>
+          <li>Access to private community group</li>
+          <li>GMT-timed — London & US open focus</li>
+        </ul>
+        <a href="https://whop.com/the-club-994b?a=meanspectrea0" class="plan-cta ghost" target="_blank">Join The Club — £50/mo</a>
+      </div>
+
+      <div class="plan featured">
+        <div class="plan-badge">Maximum Accountability</div>
+        <div class="plan-name">The Club — 1:1 Mentorship</div>
+        <div class="plan-price">£150</div>
+        <div class="plan-period">per month · limited spots</div>
+
+        <div class="plan-includes">Everything in Signal Group, plus:</div>
+        <ul class="plan-features">
+          <li>Weekly 1:1 session directly with Max</li>
+          <li>Personalised trading plan built around your account size, schedule, and risk tolerance</li>
+          <li>Your own trades reviewed and marked up weekly</li>
+          <li>Strategy, psychology, and execution coaching tailored to you</li>
+          <li>Direct WhatsApp access for questions between sessions</li>
+          <li>Held accountable to your specific goals every week</li>
+        </ul>
+
+        <hr class="plan-divider">
+        <div style="font-size:13px;color:var(--white-dim);margin-bottom:24px;line-height:1.65;">Spots are limited each month. DM on Instagram to apply — I'll be honest about whether this is the right fit for where you are.</div>
+        <a href="https://instagram.com/wardynq" class="plan-cta primary" target="_blank">DM "MENTOR" to Apply</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section style="background:var(--surface);border-top:1px solid var(--border);">
+  <div class="container">
+    <div class="section-eyebrow">Member results</div>
+    <h2 class="section-title">REAL TRADERS.<br>REAL RESULTS.</h2>
+    <p class="section-body">Unedited. Full member wins and payouts are in the Member Wins highlight on Instagram @wardynq.</p>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-payout">FUNDED ✓</div>
+        <p class="testi-quote">"I wish I could do what you do." Said that 3 months ago. Got my first payout last week. The daily recaps made it click in a way no course ever did."</p>
+        <div class="testi-meta">
+          <div class="testi-avatar">J</div>
+          <div>
+            <div class="testi-name">James T.</div>
+            <div class="testi-detail">Alpha Futures · The Club Member</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-payout">+£1,360 ✓</div>
+        <p class="testi-quote">"The pre-market outlook every morning is worth the £50 alone. I know exactly what I'm watching before London open. Pulled my first proper profitable week inside 3 weeks."</p>
+        <div class="testi-meta">
+          <div class="testi-avatar">R</div>
+          <div>
+            <div class="testi-name">Ryan M.</div>
+            <div class="testi-detail">MNQ Trader · The Club Member</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-payout">PAYOUT ✓</div>
+        <p class="testi-quote">"The 1:1 mentorship changed how I think about trading entirely. Max looked at my actual trades and told me exactly what I was doing wrong. Nothing generic. Just the truth."</p>
+        <div class="testi-meta">
+          <div class="testi-avatar">T</div>
+          <div>
+            <div class="testi-name">Tom K.</div>
+            <div class="testi-detail">1:1 Mentorship · 2 months in</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="section-eyebrow">Questions</div>
+    <h2 class="section-title">BEFORE YOU JOIN</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">What do I get every single day?</div>
+        <div class="faq-a">Every trading day: a pre-market outlook with key levels and bias before the session opens, live real-time signals as I place trades, and a post-session trade recap breaking down every entry and exit. On top of that, a full weekly P&L review every Friday.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What instrument do you trade?</div>
+        <div class="faq-a">MNQ — Micro Nasdaq futures. All signals and sessions are MNQ-specific. The mentorship course covers the full MNQ framework including risk management, setup criteria, and execution.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Are your results verified?</div>
+        <div class="faq-a">Yes. Every stat on this page is pulled from Tradesyncer — a third-party trading journal connected directly to the live account. Winning and losing trades included. The full data is also publicly available in the Instagram highlights at @wardynq.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What timezone are the sessions and signals?</div>
+        <div class="faq-a">GMT. UK-based, so everything is timed around the London open (8am GMT) and the US open (1:30pm GMT) — the two highest-probability sessions on MNQ. No 3am alerts.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What's included in the mentorship course?</div>
+        <div class="faq-a">The full course covers MNQ market structure, the exact setup criteria used in every trade, risk management framework, trading psychology and discipline, and execution process from pre-market to close. It's the complete system — not isolated modules.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What's the difference between Signal Group and 1:1 Mentorship?</div>
+        <div class="faq-a">The Club Signals (£50/mo) gives you everything — daily outlook, live sessions, signals, recaps, course, and community. The Club 1:1 Mentorship (£150/mo) adds direct weekly coaching with Max, your own trades reviewed personally, a plan built around your specific situation, and direct WhatsApp access. DM "MENTOR" on Instagram to apply.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can I cancel anytime?</div>
+        <div class="faq-a">Yes. No contracts, no lock-ins. Cancel directly through Whop in one click. The Signal Group is month-to-month. 1:1 spots are reviewed monthly.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Is this suitable for beginners?</div>
+        <div class="faq-a">The course starts from the foundations, so beginners can follow. That said, if you're completely new to futures, DM on Instagram first and I'll tell you honestly whether now is the right time or if there's groundwork to lay first.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<div class="final-cta">
+  <h2 class="final-title">STOP WATCHING.<br><span>START TRADING.</span></h2>
+  <p class="final-sub">Daily sessions. Live signals. Full course. Real results. Everything you need to trade MNQ with conviction — for £50 a month.</p>
+  <a href="https://whop.com/the-club-994b?a=meanspectrea0" class="btn-primary" target="_blank" style="font-size:15px;padding:18px 52px;">Join The Club — £50/mo</a>
+  <div style="margin-top:20px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--white-faint);letter-spacing:0.08em;">THE CLUB 1:1 MENTORSHIP AVAILABLE AT £150/MO · DM "MENTOR" TO APPLY</div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">THE <span>CLUB</span></div>
+  <div class="footer-note">Trading involves risk. Past performance is not indicative of future results. All statistics verified via Tradesyncer.</div>
+  <a href="https://instagram.com/wardynq" class="footer-ig" target="_blank">@wardynq</a>
+</footer>
+
+</body>
+</html>
