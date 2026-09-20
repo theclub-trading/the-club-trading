@@ -154,34 +154,38 @@
   }
   .section-body { font-size:16px; color:var(--white-dim); max-width:560px; line-height:1.75; font-weight:300; }
 
-  /* ── PROOF ── */
+  /* ── PROOF / WEEKLY R:R CAROUSEL ── */
   .proof-section { background:var(--surface); border-top:1px solid var(--border); }
-  .proof-months { display:grid; grid-template-columns:1fr 1fr; gap:32px; margin-top:56px; }
-  .month-block { }
-  .month-header {
-    font-family:'JetBrains Mono',monospace; font-size:10px;
-    letter-spacing:0.14em; color:var(--white-faint); text-transform:uppercase; margin-bottom:10px;
+  .wr-carousel { margin-top:56px; }
+  .wr-stage { display:flex; align-items:center; gap:20px; }
+  .wr-track-wrap { overflow:hidden; flex:1; touch-action:pan-y; }
+  .wr-track { display:flex; transition:transform 0.4s cubic-bezier(0.65,0,0.35,1); }
+  .wr-slide { flex:0 0 100%; display:flex; justify-content:center; padding:4px; }
+  .wr-card {
+    border:1px solid var(--border); background:var(--black); position:relative;
+    padding:52px 40px 40px; text-align:center; width:100%; max-width:420px;
   }
-  .month-total {
-    font-family:'Bebas Neue',sans-serif; font-size:48px;
-    color:var(--green); letter-spacing:0.02em; line-height:1; margin-bottom:16px;
+  .wr-card-badge {
+    position:absolute; top:-1px; left:50%; transform:translateX(-50%);
+    background:var(--gold); color:#000; font-size:10px; font-weight:600;
+    letter-spacing:0.1em; text-transform:uppercase; padding:5px 18px; white-space:nowrap;
   }
-  .cal-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:3px; }
-  .cal-head {
-    font-family:'JetBrains Mono',monospace; font-size:8px;
-    color:var(--white-faint); text-align:center; padding:3px 0; letter-spacing:0.08em;
+  .wr-week-label { font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.14em; color:var(--white-faint); text-transform:uppercase; margin-bottom:8px; }
+  .wr-week-dates { font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--white-dim); margin-bottom:24px; }
+  .wr-r-value { font-family:'Bebas Neue',sans-serif; font-size:76px; color:var(--green); letter-spacing:0.02em; line-height:1; margin-bottom:10px; }
+  .wr-r-caption { font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.12em; color:var(--white-faint); text-transform:uppercase; }
+  .wr-arrow {
+    flex-shrink:0; width:44px; height:44px; border-radius:50%;
+    border:1px solid var(--border); background:var(--black); color:var(--white-dim);
+    display:flex; align-items:center; justify-content:center; cursor:pointer;
+    font-size:18px; transition:all 0.2s; user-select:none;
   }
-  .cal-day {
-    aspect-ratio:1; border-radius:3px; display:flex; flex-direction:column;
-    align-items:center; justify-content:center;
-    font-family:'JetBrains Mono',monospace; font-size:8px; font-weight:500; line-height:1.2;
-    padding:2px;
-  }
-  .cal-day.g { background:#1a4d33; color:#3DDC84; }
-  .cal-day.g-big { background:#0f6e3a; color:#3DDC84; }
-  .cal-day.r { background:#4d1a1a; color:#FF5A5A; }
-  .cal-day.r-big { background:#6e0f0f; color:#FF5A5A; }
-  .cal-day.empty { background:var(--surface2); }
+  .wr-arrow:hover { border-color:var(--gold); color:var(--gold); }
+  .wr-arrow:disabled { opacity:0.25; cursor:default; }
+  .wr-arrow:disabled:hover { border-color:var(--border); color:var(--white-dim); }
+  .wr-dots { display:flex; justify-content:center; gap:8px; margin-top:24px; }
+  .wr-dot { width:6px; height:6px; border-radius:50%; background:var(--white-faint); border:none; padding:0; cursor:pointer; transition:background 0.2s,transform 0.2s; }
+  .wr-dot.active { background:var(--gold); transform:scale(1.3); }
   .proof-row-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-top:32px; }
   .proof-stat {
     padding:18px 20px; background:var(--black); border:1px solid var(--border);
@@ -312,14 +316,14 @@
 <!-- TICKER -->
 <div class="ticker-wrap">
   <div class="ticker">
-    <span>THE CLUB</span><span>+$71.5K JULY 2026</span><span>+$31.5K JUNE 2026</span><span>73.3% DAY WIN RATE</span>
+    <span>THE CLUB</span><span>+6.7R THIS WEEK</span><span>5/5 WEEKS GREEN</span><span>73.3% DAY WIN RATE</span>
     <span>LIVE SESSIONS DAILY</span><span>MNQ FUTURES</span><span>UK GMT TIMEZONE</span>
     <span>TRADESYNCER VERIFIED</span><span>DAILY TRADE RECAPS</span><span>FULL MENTORSHIP COURSE</span>
-    <span>+$26.2K IN ONE DAY</span><span>JOIN THE CLUB TODAY</span>
-    <span>THE CLUB</span><span>+$71.5K JULY 2026</span><span>+$31.5K JUNE 2026</span><span>73.3% DAY WIN RATE</span>
+    <span>TIME-BASED ALGORITHM · +41% BACKTESTED</span><span>JOIN THE CLUB TODAY</span>
+    <span>THE CLUB</span><span>+6.7R THIS WEEK</span><span>5/5 WEEKS GREEN</span><span>73.3% DAY WIN RATE</span>
     <span>LIVE SESSIONS DAILY</span><span>MNQ FUTURES</span><span>UK GMT TIMEZONE</span>
     <span>TRADESYNCER VERIFIED</span><span>DAILY TRADE RECAPS</span><span>FULL MENTORSHIP COURSE</span>
-    <span>+$26.2K IN ONE DAY</span><span>JOIN THE CLUB TODAY</span>
+    <span>TIME-BASED ALGORITHM · +41% BACKTESTED</span><span>JOIN THE CLUB TODAY</span>
   </div>
 </div>
 
@@ -328,6 +332,7 @@
   <a href="#" class="nav-logo">THE <span>CLUB</span></a>
   <div class="nav-links">
     <a href="#proof">Results</a>
+    <a href="#algorithm">Algorithm</a>
     <a href="#daily">Daily Schedule</a>
     <a href="#pricing">Pricing</a>
     <a href="#faq">FAQ</a>
@@ -343,13 +348,13 @@
 
   <div class="hero-proof-strip">
     <div class="hero-proof-item">
-      <div class="hero-proof-num">$71.5K</div>
-      <div class="hero-proof-label">July P&L</div>
+      <div class="hero-proof-num">+6.7R</div>
+      <div class="hero-proof-label">This Week</div>
     </div>
     <div class="hero-divider"></div>
     <div class="hero-proof-item">
-      <div class="hero-proof-num">$31.5K</div>
-      <div class="hero-proof-label">June P&L</div>
+      <div class="hero-proof-num">5/5</div>
+      <div class="hero-proof-label">Weeks Green</div>
     </div>
     <div class="hero-divider"></div>
     <div class="hero-proof-item">
@@ -358,8 +363,8 @@
     </div>
     <div class="hero-divider"></div>
     <div class="hero-proof-item">
-      <div class="hero-proof-num">$26.2K</div>
-      <div class="hero-proof-label">Best Single Day</div>
+      <div class="hero-proof-num">+6.7R</div>
+      <div class="hero-proof-label">Best Week Shown</div>
     </div>
   </div>
 
@@ -387,9 +392,9 @@
     <div class="stat-source">All time verified</div>
   </div>
   <div class="stat-item">
-    <div class="stat-num green">$102K+</div>
-    <div class="stat-label">June + July P&L</div>
-    <div class="stat-source">Tradesyncer live data</div>
+    <div class="stat-num green">5/5</div>
+    <div class="stat-label">Weeks Green</div>
+    <div class="stat-source">Last 5 weeks tracked</div>
   </div>
   <div class="stat-item">
     <div class="stat-num">GMT</div>
@@ -402,120 +407,93 @@
 <section class="proof-section" id="proof">
   <div class="container">
     <div class="section-eyebrow">Verified results</div>
-    <h2 class="section-title">NO CROPS.<br>NO CHERRY PICKING.<br>FULL CALENDARS.</h2>
-    <p class="section-body">Every number below is pulled directly from Tradesyncer — connected live to the trading account. Winning days and losing days both shown. Make your own judgment.</p>
+    <h2 class="section-title">WEEK BY WEEK.<br>GREEN OR IT<br>DOESN'T COUNT.</h2>
+    <p class="section-body">Weekly R:R, tracked live. Flick through the last five weeks — every single one closed positive.</p>
 
-    <div class="proof-months">
-      <!-- JUNE -->
-      <div class="month-block">
-        <div class="month-header">June 2026 — Tradesyncer Calendar</div>
-        <div class="month-total">+$31,500</div>
-        <div class="cal-grid">
-          <div class="cal-head">Su</div><div class="cal-head">Mo</div><div class="cal-head">Tu</div>
-          <div class="cal-head">We</div><div class="cal-head">Th</div><div class="cal-head">Fr</div><div class="cal-head">Sa</div>
+    <div class="wr-carousel">
+      <div class="wr-stage">
+        <button class="wr-arrow" id="wrPrev" aria-label="Previous week">‹</button>
+        <div class="wr-track-wrap" id="wrTrackWrap">
+          <div class="wr-track" id="wrTrack">
 
-          <div class="cal-day empty"></div>
-          <div class="cal-day g">+$439</div>
-          <div class="cal-day g">+$973</div>
-          <div class="cal-day g">+$347</div>
-          <div class="cal-day g">+$1.6K</div>
-          <div class="cal-day g">+$1.5K</div>
-          <div class="cal-day empty"></div>
+            <div class="wr-slide">
+              <div class="wr-card">
+                <div class="wr-week-label">5 Weeks Ago</div>
+                <div class="wr-week-dates">Aug 17 – Aug 21</div>
+                <div class="wr-r-value">+0.3R</div>
+                <div class="wr-r-caption">Weekly R:R</div>
+              </div>
+            </div>
 
-          <div class="cal-day empty"></div>
-          <div class="cal-day g">+$1.7K</div>
-          <div class="cal-day g">+$362</div>
-          <div class="cal-day g">+$742</div>
-          <div class="cal-day g-big">+$6.0K</div>
-          <div class="cal-day g">+$591</div>
-          <div class="cal-day empty"></div>
+            <div class="wr-slide">
+              <div class="wr-card">
+                <div class="wr-week-label">4 Weeks Ago</div>
+                <div class="wr-week-dates">Aug 24 – Aug 28</div>
+                <div class="wr-r-value">+5.9R</div>
+                <div class="wr-r-caption">Weekly R:R</div>
+              </div>
+            </div>
 
-          <div class="cal-day empty"></div>
-          <div class="cal-day g">+$250</div>
-          <div class="cal-day g-big">+$10.9K</div>
-          <div class="cal-day g-big">+$9.6K</div>
-          <div class="cal-day g">+$2.0K</div>
-          <div class="cal-day g">+$2.0K</div>
-          <div class="cal-day empty"></div>
+            <div class="wr-slide">
+              <div class="wr-card">
+                <div class="wr-week-label">3 Weeks Ago</div>
+                <div class="wr-week-dates">Aug 31 – Sep 4</div>
+                <div class="wr-r-value">+3.9R</div>
+                <div class="wr-r-caption">Weekly R:R</div>
+              </div>
+            </div>
 
-          <div class="cal-day empty"></div>
-          <div class="cal-day g">+$3.3K</div>
-          <div class="cal-day g">+$7.6K</div>
-          <div class="cal-day r-big">-$10.0K</div>
-          <div class="cal-day g">+$4.5K</div>
-          <div class="cal-day r">-$4.0K</div>
-          <div class="cal-day empty"></div>
+            <div class="wr-slide">
+              <div class="wr-card">
+                <div class="wr-week-label">Last Week</div>
+                <div class="wr-week-dates">Sep 7 – Sep 11</div>
+                <div class="wr-r-value">+4.05R</div>
+                <div class="wr-r-caption">Weekly R:R</div>
+              </div>
+            </div>
 
-          <div class="cal-day empty"></div>
-          <div class="cal-day empty"></div>
-          <div class="cal-day r-big">-$8.9K</div>
-          <div class="cal-day empty"></div>
-          <div class="cal-day empty"></div>
-          <div class="cal-day empty"></div>
-          <div class="cal-day empty"></div>
+            <div class="wr-slide">
+              <div class="wr-card">
+                <div class="wr-card-badge">Current Week</div>
+                <div class="wr-week-label">This Week</div>
+                <div class="wr-week-dates">Sep 14 – Sep 18</div>
+                <div class="wr-r-value">+6.7R</div>
+                <div class="wr-r-caption">Weekly R:R</div>
+              </div>
+            </div>
+
+          </div>
         </div>
+        <button class="wr-arrow" id="wrNext" aria-label="Next week">›</button>
       </div>
-
-      <!-- JULY -->
-      <div class="month-block">
-        <div class="month-header">July 2026 — Tradesyncer Calendar (ongoing)</div>
-        <div class="month-total">+$71,500</div>
-        <div class="cal-grid">
-          <div class="cal-head">Su</div><div class="cal-head">Mo</div><div class="cal-head">Tu</div>
-          <div class="cal-head">We</div><div class="cal-head">Th</div><div class="cal-head">Fr</div><div class="cal-head">Sa</div>
-
-          <div class="cal-day empty"></div>
-          <div class="cal-day empty"></div>
-          <div class="cal-day r-big">-$8.9K</div>
-          <div class="cal-day g-big">+$19.5K</div>
-          <div class="cal-day g-big">+$13.3K</div>
-          <div class="cal-day empty"></div>
-          <div class="cal-day empty"></div>
-
-          <div class="cal-day empty"></div>
-          <div class="cal-day empty"></div>
-          <div class="cal-day empty"></div>
-          <div class="cal-day g">+$1.6K</div>
-          <div class="cal-day g">+$1.5K</div>
-          <div class="cal-day g">+$40</div>
-          <div class="cal-day empty"></div>
-
-          <div class="cal-day empty"></div>
-          <div class="cal-day empty"></div>
-          <div class="cal-day g-big">+$26.2K</div>
-          <div class="cal-day g">+$445</div>
-          <div class="cal-day g">+$788</div>
-          <div class="cal-day g-big">+$8.3K</div>
-          <div class="cal-day empty"></div>
-
-          <div class="cal-day empty"></div>
-          <div class="cal-day empty"></div>
-          <div class="cal-day empty"></div>
-          <div class="cal-day empty"></div>
-          <div class="cal-day empty"></div>
-          <div class="cal-day empty"></div>
-          <div class="cal-day empty"></div>
-
-          <div class="cal-day empty"></div>
-          <div class="cal-day empty"></div>
-          <div class="cal-day empty"></div>
-          <div class="cal-day empty"></div>
-          <div class="cal-day empty"></div>
-          <div class="cal-day empty"></div>
-          <div class="cal-day empty"></div>
-        </div>
-      </div>
+      <div class="wr-dots" id="wrDots"></div>
     </div>
 
     <div class="proof-row-grid">
-      <div class="proof-stat"><div class="proof-stat-key">Best Single Day</div><div class="proof-stat-val g">+$26.2K</div></div>
-      <div class="proof-stat"><div class="proof-stat-key">Best Single Week</div><div class="proof-stat-val g">+$35.7K</div></div>
-      <div class="proof-stat"><div class="proof-stat-key">Tradesyncer Score</div><div class="proof-stat-val">77/100</div></div>
-      <div class="proof-stat"><div class="proof-stat-key">Total Trades (all time)</div><div class="proof-stat-val">353</div></div>
-      <div class="proof-stat"><div class="proof-stat-key">Max Drawdown</div><div class="proof-stat-val">16.3%</div></div>
+      <div class="proof-stat"><div class="proof-stat-key">Weeks Shown</div><div class="proof-stat-val g">5 / 5 Green</div></div>
+      <div class="proof-stat"><div class="proof-stat-key">Best Week Shown</div><div class="proof-stat-val g">+6.7R</div></div>
       <div class="proof-stat"><div class="proof-stat-key">Instrument</div><div class="proof-stat-val" style="font-size:22px;letter-spacing:0.06em;">MNQ FUTURES</div></div>
     </div>
-    <div class="proof-note">All data sourced directly from Tradesyncer — third-party verified trading journal connected to live account. Includes all winning and losing trades. Past performance is not indicative of future results.</div>
+    <div class="proof-note">R:R = return relative to fixed risk per trade. Every winning and losing week is shown — none excluded. Past performance is not indicative of future results.</div>
+  </div>
+</section>
+
+<!-- TIME-BASED ALGORITHM -->
+<section id="algorithm" style="background:var(--surface);border-top:1px solid var(--border);">
+  <div class="container">
+    <div class="section-eyebrow">New system</div>
+    <h2 class="section-title">INTRODUCING THE<br><span class="gold">TIME-BASED ALGORITHM.</span></h2>
+    <p class="section-body">A second proprietary system, built and refined alongside the core MNQ framework. We're not publishing the logic — only the numbers. Backtested over the last 365 days on a $50,000 account.</p>
+
+    <div class="proof-row-grid">
+      <div class="proof-stat"><div class="proof-stat-key">Total Return</div><div class="proof-stat-val g">+41.12%</div></div>
+      <div class="proof-stat"><div class="proof-stat-key">Net P&L</div><div class="proof-stat-val g">+$20,561</div></div>
+      <div class="proof-stat"><div class="proof-stat-key">Profit Factor</div><div class="proof-stat-val">1.562</div></div>
+      <div class="proof-stat"><div class="proof-stat-key">Win Rate</div><div class="proof-stat-val" style="font-size:26px;">44.05% <span style="font-size:13px;color:var(--white-faint);font-family:'JetBrains Mono',monospace;">(37/84)</span></div></div>
+      <div class="proof-stat"><div class="proof-stat-key">Max Drawdown</div><div class="proof-stat-val">10.77%</div></div>
+      <div class="proof-stat"><div class="proof-stat-key">Gross Profit / Loss</div><div class="proof-stat-val" style="font-size:22px;">$57.1K / $36.6K</div></div>
+    </div>
+    <div class="proof-note">Backtested via TradingView strategy tester over the last 365 days on a $50,000 simulated account. Backtested results are hypothetical, do not reflect live trading, and are not indicative of future performance.</div>
   </div>
 </section>
 
@@ -750,5 +728,54 @@
   <a href="https://instagram.com/wardynq" class="footer-ig" target="_blank">@wardynq</a>
 </footer>
 
+<script>
+(function(){
+  var track = document.getElementById('wrTrack');
+  var wrap = document.getElementById('wrTrackWrap');
+  var prev = document.getElementById('wrPrev');
+  var next = document.getElementById('wrNext');
+  var dotsWrap = document.getElementById('wrDots');
+  if (!track) return;
+  var slides = track.children;
+  var count = slides.length;
+  var index = count - 1; // start on the current week
+
+  for (var i = 0; i < count; i++) {
+    var dot = document.createElement('button');
+    dot.className = 'wr-dot';
+    dot.setAttribute('aria-label', 'Go to week ' + (i + 1));
+    dot.addEventListener('click', (function(idx){ return function(){ goTo(idx); }; })(i));
+    dotsWrap.appendChild(dot);
+  }
+  var dots = dotsWrap.children;
+
+  function render() {
+    track.style.transform = 'translateX(-' + (index * 100) + '%)';
+    prev.disabled = index === 0;
+    next.disabled = index === count - 1;
+    for (var i = 0; i < dots.length; i++) {
+      dots[i].classList.toggle('active', i === index);
+    }
+  }
+  function goTo(i) {
+    index = Math.max(0, Math.min(count - 1, i));
+    render();
+  }
+  prev.addEventListener('click', function(){ goTo(index - 1); });
+  next.addEventListener('click', function(){ goTo(index + 1); });
+
+  // swipe / flick support
+  var startX = null;
+  wrap.addEventListener('touchstart', function(e){ startX = e.touches[0].clientX; }, {passive:true});
+  wrap.addEventListener('touchend', function(e){
+    if (startX === null) return;
+    var dx = e.changedTouches[0].clientX - startX;
+    if (Math.abs(dx) > 40) { dx < 0 ? goTo(index + 1) : goTo(index - 1); }
+    startX = null;
+  }, {passive:true});
+
+  render();
+})();
+</script>
 </body>
 </html>
