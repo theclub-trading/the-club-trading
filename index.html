@@ -1092,7 +1092,7 @@
     </details>
     <details class="faq-item">
       <summary>What timezone are the sessions and signals?<span class="faq-plus" aria-hidden="true"></span></summary>
-      <p class="faq-a">GMT. UK-based, so everything is timed around the London open (8am GMT) and the US open (1:30pm GMT) — the two highest-probability sessions on the Nasdaq 100. No 3am alerts.</p>
+      <p class="faq-a">UK time. UK-based, so everything is timed around the London open (8am UK time) and the US open (2:30pm UK time for most of the year) — the two highest-probability sessions on the Nasdaq 100. No 3am alerts.</p>
     </details>
     <details class="faq-item">
       <summary>What's included in the mentorship course?<span class="faq-plus" aria-hidden="true"></span></summary>
@@ -1227,7 +1227,7 @@
      Paste your Pixel ID between the quotes to switch tracking on.
      UK rules (PECR/GDPR) need consent first, so the pixel only loads after "Accept".
      Events: PageView on load, InitiateCheckout on any Whop link, Contact on any Instagram link. */
-  var META_PIXEL_ID = '';
+  var META_PIXEL_ID = '4389319021406763';
   var CONSENT_KEY = 'tc_consent_v1';
   function getConsent(){ try { return localStorage.getItem(CONSENT_KEY); } catch(e) { return null; } }
   function setConsent(v){ try { localStorage.setItem(CONSENT_KEY, v); } catch(e) {} }
@@ -1250,6 +1250,18 @@
       else if (a.href.indexOf('instagram.com') > -1) fbq('track', 'Contact');
     });
   }
+
+  /* Pass ad tracking parameters (utm_*, fbclid) through to Whop checkout links,
+     so sales can be attributed to the ad/creative that drove them. */
+  try {
+    var qp = new URLSearchParams(location.search), keep = new URLSearchParams();
+    qp.forEach(function(v,k){ if (/^utm_|^fbclid$/.test(k)) keep.set(k,v); });
+    if ([...keep.keys()].length) {
+      document.querySelectorAll('a[href*="whop.com"]').forEach(function(a){
+        var u = new URL(a.href); keep.forEach(function(v,k){ u.searchParams.set(k,v); }); a.href = u.toString();
+      });
+    }
+  } catch(e) {}
 
   document.getElementById('yr').textContent = new Date().getFullYear();
 })();
