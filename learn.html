@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>The Club — Learn to Trade the Nasdaq 100 | UK Trading Education</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="Learn to trade the Nasdaq 100 with live daily sessions, a structured course and real-time trade breakdowns. UK based.">
+<meta name="theme-color" content="#080808">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The Club — Learn to Trade the Nasdaq 100">
+<meta property="og:description" content="Live daily sessions, a full course and real-time trade breakdowns. UK based.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23080808'/%3E%3Ctext x='32' y='44' font-family='Arial Black,Arial' font-weight='900' font-size='30' text-anchor='middle' fill='%23C9A84C'%3EC%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* ─────────────────────────────────────────────
+     DESIGN TOKENS
+     Colourway: The Club (black / gold / green)
+     Layout language: Apple Store (large left-aligned
+     headlines, card shelves, rounded tiles, glass nav)
+     ───────────────────────────────────────────── */
+  :root {
+    --black: #080808;
+    --surface: #111111;
+    --surface2: #181818;
+    --surface3: #1F1F1F;
+    --border: rgba(255,255,255,0.08);
+    --border-strong: rgba(255,255,255,0.14);
+    --white: #F5F5F0;
+    --white-dim: rgba(245,245,240,0.62);
+    --white-mute: rgba(245,245,240,0.42);
+    --white-faint: rgba(245,245,240,0.15);
+    --gold: #C9A84C;
+    --gold-hover: #D4B05A;
+    --gold-dim: rgba(201,168,76,0.12);
+    --gold-glow: rgba(201,168,76,0.25);
+    --green: #3DDC84;
+    --green-dim: rgba(61,220,132,0.12);
+    --red: #FF5A5A;
+
+    --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+    --display: 'Bebas Neue', sans-serif;
+
+    --radius-card: 18px;
+    --radius-tile: 14px;
+    --radius-pill: 980px;
+    --gutter: max(22px, calc((100vw - 1280px) / 2 + 22px));
+    --ease: cubic-bezier(0.28, 0.11, 0.32, 1);
+    --nav-h: 48px;
+  }
+
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--font);
+    font-size: 17px;
+    line-height: 1.47;
+    letter-spacing: -0.022em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+  a { color: inherit; text-decoration: none; }
+  button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+  .tnum { font-variant-numeric: tabular-nums; }
+  .gold { color: var(--gold); }
+  .green { color: var(--green); }
+  .sr-only { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+  :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 6px; }
+
+  /* ── GLOBAL NAV (glass, thin) ── */
+  .gnav {
+    position: sticky; top: 0; z-index: 100; height: var(--nav-h);
+    background: rgba(8,8,8,0.72);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+  .gnav-inner {
+    height: 100%; max-width: 1024px; margin: 0 auto; padding: 0 22px;
+    display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  }
+  .gnav-logo { font-family: var(--display); font-size: 21px; letter-spacing: 0.12em; line-height: 1; padding-top: 2px; }
+  .gnav-logo span { color: var(--gold); }
+  .gnav-links { display: flex; align-items: center; gap: 34px; list-style: none; }
+  .gnav-links a { font-size: 12px; letter-spacing: -0.01em; color: var(--white-dim); transition: color .2s; }
+  .gnav-links a:hover { color: var(--white); }
+  .gnav-right { display: flex; align-items: center; gap: 14px; }
+  .gnav-cta {
+    font-size: 12px; font-weight: 600; letter-spacing: 0; color: #000; background: var(--gold);
+    padding: 5px 14px; border-radius: var(--radius-pill); transition: background .2s;
+  }
+  .gnav-cta:hover { background: var(--gold-hover); }
+  .gnav-burger { display: none; width: 32px; height: 32px; position: relative; }
+  .gnav-burger span { position: absolute; left: 8px; width: 16px; height: 1.5px; background: var(--white); border-radius: 1px; transition: transform .3s var(--ease), top .3s var(--ease); }
+  .gnav-burger span:nth-child(1) { top: 12px; }
+  .gnav-burger span:nth-child(2) { top: 19px; }
+  .menu-open .gnav-burger span:nth-child(1) { top: 15.5px; transform: rotate(45deg); }
+  .menu-open .gnav-burger span:nth-child(2) { top: 15.5px; transform: rotate(-45deg); }
+  .gnav-sheet {
+    position: fixed; inset: var(--nav-h) 0 0 0; z-index: 99;
+    background: rgba(8,8,8,0.97); -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px);
+    padding: 28px 40px 40px; opacity: 0; visibility: hidden; transition: opacity .3s var(--ease), visibility .3s;
+  }
+  .menu-open .gnav-sheet { opacity: 1; visibility: visible; }
+  .gnav-sheet ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+  .gnav-sheet a { display: block; font-size: 28px; font-weight: 600; letter-spacing: -0.02em; padding: 6px 0; color: var(--white); }
+  .gnav-sheet .sheet-sub { margin-top: 28px; font-size: 12px; color: var(--white-mute); }
+  .gnav-sheet .sheet-sub a { font-size: 17px; font-weight: 500; color: var(--gold); padding: 4px 0; }
+
+  /* ── RIBBON (rotating message bar) ── */
+  .ribbon { background: var(--surface); border-bottom: 1px solid var(--border); }
+  .ribbon-inner {
+    max-width: 1024px; margin: 0 auto; padding: 14px 54px; position: relative;
+    text-align: center; font-size: 14px; letter-spacing: -0.016em; color: var(--white-dim); min-height: 50px;
+  }
+  .ribbon-msg { display: none; }
+  .ribbon-msg.active { display: block; animation: ribbonIn .5s var(--ease); }
+  .ribbon-msg a { color: var(--gold); white-space: nowrap; }
+  .ribbon-msg a:hover { text-decoration: underline; }
+  .ribbon-msg strong { color: var(--white); font-weight: 600; }
+  .ribbon-arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; display: grid; place-items: center; color: var(--white-mute); border-radius: 50%; transition: color .2s, background .2s; }
+  .ribbon-arrow:hover { color: var(--white); background: var(--surface2); }
+  .ribbon-arrow.prev { left: 12px; } .ribbon-arrow.next { right: 12px; }
+  .js .ribbon-msg:not(.active) { display: none; }
+  html:not(.js) .ribbon-msg:first-child { display: block; }
+  @keyframes ribbonIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+
+  /* ── HERO HEADER (Apple "Store" header) ── */
+  .page-head {
+    position: relative; padding: 76px var(--gutter) 40px;
+    display: grid; grid-template-columns: 1.55fr 1fr; gap: 48px; align-items: end;
+  }
+  .page-head::before {
+    content: ''; position: absolute; inset: -120px 0 -60px 0; pointer-events: none; z-index: -1;
+    background:
+      radial-gradient(ellipse 55% 60% at 18% 0%, rgba(201,168,76,0.13) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 45% at 85% 40%, rgba(61,220,132,0.05) 0%, transparent 70%);
+  }
+  .head-eyebrow { font-size: 12px; font-weight: 600; letter-spacing: 0.01em; color: var(--gold); margin-bottom: 18px; display: flex; flex-wrap: wrap; gap: 6px 10px; }
+  .head-eyebrow span + span::before { content: '·'; margin-right: 10px; color: var(--white-faint); }
+  .head-title {
+    font-size: clamp(48px, 7.4vw, 96px); font-weight: 700; line-height: 1.02;
+    letter-spacing: -0.035em;
+  }
+  .head-aside { padding-bottom: 10px; max-width: 380px; justify-self: end; }
+  .head-sub { font-size: 21px; font-weight: 600; line-height: 1.24; letter-spacing: -0.02em; color: var(--white); margin-bottom: 18px; }
+  .head-sub span { color: var(--white-mute); }
+  .head-links { display: flex; flex-direction: column; gap: 10px; }
+  .link-arrow { color: var(--gold); font-size: 17px; display: inline-flex; align-items: center; gap: 4px; }
+  .link-arrow::after { content: '›'; font-size: 1.15em; line-height: 1; transform: translateY(-1px); transition: transform .2s var(--ease); }
+  .link-arrow:hover { text-decoration: underline; }
+  .link-arrow:hover::after { transform: translate(2px,-1px); }
+  .head-help { font-size: 12px; color: var(--white-mute); margin-top: 18px; line-height: 1.5; }
+  .head-help a { color: var(--gold); }
+
+  .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 30px; }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+    font-size: 17px; font-weight: 500; letter-spacing: -0.02em; line-height: 1;
+    padding: 14px 24px; border-radius: var(--radius-pill); transition: background .2s, color .2s, border-color .2s, transform .2s var(--ease);
+    white-space: nowrap;
+  }
+  .btn-gold { background: var(--gold); color: #000; }
+  .btn-gold:hover { background: var(--gold-hover); }
+  .btn-ghost { border: 1px solid var(--border-strong); color: var(--white); }
+  .btn-ghost:hover { border-color: rgba(255,255,255,0.32); background: rgba(255,255,255,0.04); }
+  .btn-sm { font-size: 14px; padding: 9px 16px; }
+  .btn-block { width: 100%; }
+
+  /* ── STAT NAV ROW (Apple category icon row) ── */
+  .stat-row-wrap { padding: 28px 0 8px; }
+  .stat-row {
+    display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory;
+    padding: 6px var(--gutter) 18px; scrollbar-width: none;
+  }
+  .stat-row::-webkit-scrollbar { display: none; }
+  .stat-chip {
+    flex: 0 0 auto; min-width: 148px; scroll-snap-align: start; text-align: center;
+    padding: 22px 18px 18px; border-radius: var(--radius-tile);
+    transition: background .25s var(--ease);
+  }
+  .stat-chip:hover { background: var(--surface); }
+  .stat-chip-num { font-size: 40px; font-weight: 700; letter-spacing: -0.04em; line-height: 1; margin-bottom: 12px; font-variant-numeric: tabular-nums; }
+  .stat-chip-label { font-size: 14px; font-weight: 600; letter-spacing: -0.016em; color: var(--white); }
+  .stat-chip-src { font-size: 12px; color: var(--white-mute); margin-top: 3px; letter-spacing: -0.01em; white-space: nowrap; }
+
+  /* ── SHELF (section with headline + horizontal card scroller) ── */
+  .shelf { padding: 64px 0 24px; scroll-margin-top: var(--nav-h); }
+  .shelf-head { padding: 0 var(--gutter); display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; }
+  .head-title, .shelf-title, .final-title, .bento-title, .card-title { text-wrap: balance; }
+  .shelf-title { font-size: clamp(24px, 3vw, 32px); font-weight: 600; line-height: 1.14; letter-spacing: -0.02em; max-width: 920px; }
+  .shelf-title .muted { color: var(--white-mute); }
+  .shelf-lede { padding: 12px var(--gutter) 0; font-size: 17px; color: var(--white-dim); max-width: calc(680px + 2 * var(--gutter)); line-height: 1.5; }
+  .scroller {
+    display: flex; gap: 20px; overflow-x: auto; overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory; scroll-padding-inline: var(--gutter);
+    padding: 28px var(--gutter) 34px; scrollbar-width: none;
+  }
+  .scroller::-webkit-scrollbar { display: none; }
+  .scroller > * { scroll-snap-align: start; flex: 0 0 auto; }
+  .paddles { display: flex; gap: 14px; justify-content: flex-end; padding: 0 var(--gutter); margin-top: -10px; }
+  .paddle {
+    width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center;
+    background: var(--surface2); color: var(--white-dim); transition: background .2s, color .2s, opacity .2s;
+  }
+  .paddle:hover:not(:disabled) { background: var(--surface3); color: var(--white); }
+  .paddle:disabled { opacity: .35; cursor: default; }
+  .paddle svg { width: 14px; height: 14px; }
+
+  /* ── CARD (Apple ccard) ── */
+  .card {
+    position: relative; border-radius: var(--radius-card); background: var(--surface);
+    border: 1px solid var(--border); overflow: hidden;
+    transition: transform .4s var(--ease), border-color .3s, box-shadow .4s var(--ease);
+  }
+  .card:hover { transform: scale(1.012); border-color: var(--border-strong); box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
+  .card-pad { padding: 30px 30px 32px; }
+  .card-eyebrow { font-size: 12px; font-weight: 600; letter-spacing: 0.02em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+  .card-title { font-size: 28px; font-weight: 600; line-height: 1.14; letter-spacing: -0.02em; margin-bottom: 10px; }
+  .card-body { font-size: 14px; line-height: 1.5; color: var(--white-dim); letter-spacing: -0.012em; }
+
+  /* intro text card (first card in a shelf) */
+  .card-intro { width: 400px; min-height: 360px; display: flex; flex-direction: column; background: linear-gradient(160deg, #15130d 0%, var(--surface) 55%); }
+  .card-intro .card-title { font-size: 28px; }
+  .card-intro .card-body { font-size: 15px; }
+  .card-intro .intro-foot { margin-top: auto; padding-top: 24px; }
+
+  /* week cards */
+  .week-card { width: 290px; min-height: 360px; display: flex; flex-direction: column; }
+  .week-card .card-pad { display: flex; flex-direction: column; height: 100%; flex: 1; }
+  .week-dates { font-size: 14px; color: var(--white-mute); font-variant-numeric: tabular-nums; }
+  .week-r { margin-top: auto; font-size: 76px; font-weight: 700; letter-spacing: -0.045em; line-height: 0.95; color: var(--green); font-variant-numeric: tabular-nums; }
+  .week-cap { font-size: 12px; color: var(--white-mute); margin-top: 10px; letter-spacing: 0; }
+  .week-card.current { border-color: rgba(201,168,76,0.55); background: linear-gradient(180deg, rgba(201,168,76,0.10) 0%, var(--surface) 60%); }
+  .week-card.current:hover { border-color: var(--gold); }
+  .week-r.neg { color: var(--red); }
+  .week-card.red { background: linear-gradient(180deg, rgba(255,90,90,0.07) 0%, var(--surface) 60%); }
+  .week-badge {
+    align-self: flex-start; margin: -8px 0 12px; font-size: 11px; font-weight: 600; color: #000;
+    background: var(--gold); padding: 4px 10px; border-radius: var(--radius-pill); letter-spacing: 0;
+  }
+
+  /* ── TILE GRID (Apple "Store difference" small tiles) ── */
+  .tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; padding: 0 var(--gutter); }
+  .tile { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-tile); padding: 22px 24px; display: flex; flex-direction: column; gap: 6px; transition: border-color .3s; }
+  .tile:hover { border-color: var(--border-strong); }
+  .tile-key { font-size: 12px; font-weight: 500; color: var(--white-mute); letter-spacing: 0; }
+  .tile-val { font-size: 32px; font-weight: 700; letter-spacing: -0.035em; line-height: 1.05; color: var(--gold); font-variant-numeric: tabular-nums; }
+  .tile-val.g { color: var(--green); }
+  .tile-val small { font-size: 14px; font-weight: 500; color: var(--white-mute); letter-spacing: -0.01em; }
+  .fineprint { padding: 18px var(--gutter) 0; font-size: 12px; line-height: 1.6; color: var(--white-mute); max-width: calc(860px + 2 * var(--gutter)); letter-spacing: -0.005em; }
+
+  /* ── FEATURE BENTO (Apple large card + stacked cards) ── */
+  .bento { display: grid; grid-template-columns: 1.25fr 1fr; gap: 20px; padding: 28px var(--gutter) 0; }
+  .bento-hero { min-height: 520px; display: flex; flex-direction: column; background: radial-gradient(ellipse 80% 70% at 80% 100%, rgba(201,168,76,0.16) 0%, transparent 60%), var(--surface); }
+  .bento-hero .card-pad { padding: 40px 40px 0; }
+  .bento-title { font-size: clamp(30px, 3.4vw, 40px); font-weight: 700; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 14px; }
+  .grad-gold { background: linear-gradient(90deg, #E6CB7A 0%, var(--gold) 45%, #9C7D2E 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .bento-hero .card-body { font-size: 17px; max-width: 520px; }
+  .bento-big { margin-top: auto; padding: 40px; }
+  .bento-big-num { font-size: clamp(72px, 9vw, 128px); font-weight: 700; letter-spacing: -0.05em; line-height: 0.9; color: var(--green); font-variant-numeric: tabular-nums; }
+  .bento-big-cap { font-size: 14px; color: var(--white-mute); margin-top: 12px; }
+  .bento-side { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .bento-side .tile { border-radius: var(--radius-card); padding: 26px 24px; justify-content: flex-end; min-height: 150px; }
+
+  /* ── SCHEDULE CARDS ── */
+  .sched-card { width: 360px; min-height: 380px; display: flex; flex-direction: column; }
+  .sched-card .card-pad { display: flex; flex-direction: column; flex: 1; }
+  .sched-step { font-size: 12px; color: var(--white-mute); font-variant-numeric: tabular-nums; margin-bottom: 26px; display: flex; align-items: center; gap: 10px; }
+  .sched-step::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .sched-time { font-size: 40px; font-weight: 700; letter-spacing: -0.04em; line-height: 1; color: var(--gold); margin-bottom: 6px; }
+  .sched-label { font-size: 12px; color: var(--white-mute); margin-bottom: 28px; }
+  .sched-card .card-title { font-size: 24px; }
+  .sched-card .card-body { font-size: 15px; }
+
+  /* ── FEATURE CARDS ── */
+  .feat-card { width: 300px; min-height: 300px; }
+  .feat-icon { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: var(--gold-dim); color: var(--gold); margin-bottom: 30px; }
+  .feat-icon svg { width: 22px; height: 22px; }
+  .feat-card .card-title { font-size: 21px; margin-bottom: 8px; }
+
+  /* ── PRICING ── */
+  .plans { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 28px var(--gutter) 0; align-items: stretch; }
+  .plan { display: flex; flex-direction: column; padding: 40px 36px 36px; }
+  .plan:hover { transform: none; }
+  .plan.featured { border-color: rgba(201,168,76,0.6); background: radial-gradient(ellipse 90% 50% at 50% 0%, rgba(201,168,76,0.12) 0%, transparent 70%), var(--surface); }
+  .plan-badge { display: inline-block; align-self: flex-start; font-size: 12px; font-weight: 600; color: #000; background: var(--gold); padding: 4px 12px; border-radius: var(--radius-pill); margin-bottom: 18px; letter-spacing: 0; }
+  .plan-name { font-size: 14px; font-weight: 600; color: var(--gold); margin-bottom: 6px; letter-spacing: -0.01em; }
+  .plan-price { font-size: 64px; font-weight: 700; letter-spacing: -0.045em; line-height: 1; font-variant-numeric: tabular-nums; }
+  .plan-period { font-size: 14px; color: var(--white-mute); margin: 8px 0 28px; }
+  .plan-includes { font-size: 14px; font-weight: 600; color: var(--white); margin-bottom: 14px; }
+  .plan-features { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 30px; }
+  .plan-features li { font-size: 15px; color: var(--white-dim); display: flex; gap: 12px; align-items: flex-start; line-height: 1.45; }
+  .plan-features li::before {
+    content: ''; flex-shrink: 0; width: 18px; height: 18px; margin-top: 1px; border-radius: 50%;
+    background: var(--gold-dim) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cpath d='M5 9.4l2.6 2.5L13 6.5' fill='none' stroke='%23C9A84C' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/18px no-repeat;
+  }
+  .plan-note { font-size: 14px; color: var(--white-dim); line-height: 1.55; padding-top: 22px; margin-bottom: 22px; border-top: 1px solid var(--border); }
+  .plan-cta-wrap { margin-top: auto; }
+
+  /* ── TESTIMONIALS ── */
+  .testi-card { width: 360px; min-height: 300px; display: flex; flex-direction: column; }
+  .testi-media { background: #000; aspect-ratio: 16 / 10; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid var(--border); overflow: hidden; }
+  .testi-media img { width: 100%; height: 100%; object-fit: contain; display: block; }
+  .testi-card.has-media .testi-quote { font-size: 19px; font-weight: 600; letter-spacing: -0.022em; }
+  .testi-card .card-pad { display: flex; flex-direction: column; flex: 1; }
+  .testi-payout { align-self: flex-start; font-size: 12px; font-weight: 600; color: var(--green); background: var(--green-dim); padding: 4px 10px; border-radius: var(--radius-pill); margin-bottom: 22px; font-variant-numeric: tabular-nums; }
+  .testi-quote { font-size: 17px; line-height: 1.5; color: var(--white); letter-spacing: -0.02em; margin-bottom: 26px; }
+  .testi-meta { display: flex; align-items: center; gap: 12px; margin-top: auto; }
+  .testi-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--gold-dim); border: 1px solid rgba(201,168,76,0.5); display: grid; place-items: center; font-weight: 600; font-size: 16px; color: var(--gold); flex-shrink: 0; }
+  .testi-name { font-size: 14px; font-weight: 600; }
+  .testi-detail { font-size: 12px; color: var(--white-mute); }
+
+
+  /* ── COURSE TEASER ── */
+  .series { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; padding: 28px var(--gutter) 0; }
+  .series-tile { padding: 26px 26px 28px; border-radius: var(--radius-card); gap: 8px; }
+  .series-num { font-size: 12px; color: var(--gold); font-variant-numeric: tabular-nums; font-weight: 600; }
+  .series-name { font-size: 24px; font-weight: 700; letter-spacing: -0.025em; line-height: 1.15; margin-bottom: 4px; }
+  .lesson-card { width: 330px; min-height: 380px; display: flex; flex-direction: column; }
+  .lesson-media { position: relative; aspect-ratio: 16 / 9; background: #0c0c0c; overflow: hidden; border-bottom: 1px solid var(--border); }
+  .lesson-media img { width: 100%; height: 100%; object-fit: cover; display: block; transform: scale(1.06); }
+  .lesson-blank { width: 100%; height: 100%; background: radial-gradient(ellipse 70% 80% at 50% 50%, rgba(201,168,76,0.18) 0%, transparent 70%), #0c0c0c; }
+  .lock { position: absolute; left: 14px; bottom: 12px; display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: var(--white);
+    background: rgba(8,8,8,0.72); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border: 1px solid var(--border-strong); padding: 5px 10px 5px 8px; border-radius: var(--radius-pill); letter-spacing: 0; }
+  .lock svg { width: 13px; height: 13px; color: var(--gold); }
+  .lesson-card .card-title { font-size: 21px; }
+  .lesson-cta { justify-content: center; background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(201,168,76,0.18) 0%, transparent 70%), var(--surface); border-color: rgba(201,168,76,0.4); }
+
+  /* ── MEMBER RESULTS ── */
+  .result-media { background: #000; height: 260px; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid var(--border); padding: 12px; }
+  .result-media img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; border-radius: 8px; }
+  .result-card .testi-quote { font-size: 17px; }
+  .result-note { font-size: 15px; line-height: 1.5; color: var(--white-dim); margin-bottom: 22px; letter-spacing: -0.015em; }
+
+  /* ── FAQ (accordion) ── */
+  .faq { padding: 28px var(--gutter) 0; max-width: calc(980px + 2 * var(--gutter)); }
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-item:first-child { border-top: 1px solid var(--border); }
+  .faq-item summary {
+    list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 24px;
+    padding: 22px 0; font-size: 19px; font-weight: 600; letter-spacing: -0.02em; transition: color .2s;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary:hover { color: var(--gold); }
+  .faq-plus { flex-shrink: 0; width: 22px; height: 22px; position: relative; color: var(--white-mute); }
+  .faq-plus::before, .faq-plus::after { content: ''; position: absolute; top: 50%; left: 50%; width: 14px; height: 1.6px; background: currentColor; border-radius: 1px; transform: translate(-50%,-50%); transition: transform .3s var(--ease); }
+  .faq-plus::after { transform: translate(-50%,-50%) rotate(90deg); }
+  .faq-item[open] .faq-plus::after { transform: translate(-50%,-50%) rotate(0deg); }
+  .faq-item[open] summary { color: var(--white); }
+  .faq-a { font-size: 17px; color: var(--white-dim); line-height: 1.55; padding: 0 44px 26px 0; max-width: 820px; }
+
+  /* ── FINAL CTA ── */
+  .final { padding: 80px var(--gutter) 24px; }
+  .final-card {
+    border-radius: 28px; text-align: center; padding: 100px 28px; position: relative; overflow: hidden;
+    background: radial-gradient(ellipse 60% 70% at 50% 110%, rgba(201,168,76,0.22) 0%, transparent 70%), var(--surface);
+    border: 1px solid var(--border);
+  }
+  .final-title { font-size: clamp(44px, 7vw, 88px); font-weight: 700; line-height: 1.02; letter-spacing: -0.04em; margin-bottom: 22px; }
+  .final-sub { font-size: 21px; line-height: 1.38; color: var(--white-dim); max-width: 560px; margin: 0 auto 36px; letter-spacing: -0.02em; }
+  .final-note { margin-top: 22px; font-size: 12px; color: var(--white-mute); letter-spacing: 0; }
+  .final-note a { color: var(--gold); }
+
+  /* ── QUICK LINKS ── */
+  .quick { padding: 56px var(--gutter) 64px; }
+  .quick-title { font-size: clamp(24px, 3vw, 32px); font-weight: 600; letter-spacing: -0.02em; margin-bottom: 20px; }
+  .quick-list { display: flex; flex-wrap: wrap; gap: 12px; list-style: none; }
+  .quick-list a { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; padding: 10px 18px; border: 1px solid var(--border-strong); border-radius: var(--radius-pill); color: var(--white-dim); transition: color .2s, border-color .2s; }
+  .quick-list a::after { content: '↗'; font-size: 12px; color: var(--white-mute); }
+  .quick-list a[href^="#"]::after { content: '›'; font-size: 15px; }
+  .quick-list a:hover { color: var(--white); border-color: rgba(255,255,255,0.32); }
+
+  /* ── FOOTER ── */
+  footer { background: var(--surface); border-top: 1px solid var(--border); }
+  .foot { padding: 28px var(--gutter) 26px; font-size: 12px; line-height: 1.6; color: var(--white-mute); letter-spacing: -0.005em; }
+  .foot p + p { margin-top: 10px; }
+  .foot-rule { border: 0; border-top: 1px solid var(--border); margin: 20px 0 16px; }
+  .foot-bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .foot-logo { font-family: var(--display); font-size: 18px; letter-spacing: 0.1em; color: var(--white-dim); line-height: 1; }
+  .foot-logo span { color: var(--gold); }
+  .foot-links { display: flex; gap: 20px; flex-wrap: wrap; }
+  .foot-links a { color: var(--white-dim); transition: color .2s; }
+  .foot-links a:hover { color: var(--gold); }
+
+
+  /* ── COOKIE CONSENT (only shown when a Meta Pixel ID is set) ── */
+  .consent {
+    position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 200; max-width: 560px; margin: 0 auto;
+    background: rgba(24,24,24,0.92); -webkit-backdrop-filter: saturate(180%) blur(20px); backdrop-filter: saturate(180%) blur(20px);
+    border: 1px solid var(--border-strong); border-radius: var(--radius-card); padding: 18px 20px;
+    display: none; gap: 16px; align-items: center; box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+  }
+  .consent.show { display: flex; }
+  .consent p { font-size: 13px; line-height: 1.45; color: var(--white-dim); letter-spacing: -0.01em; }
+  .consent-btns { display: flex; gap: 8px; flex-shrink: 0; }
+  @media (max-width: 600px) { .consent { flex-direction: column; align-items: stretch; } .consent-btns .btn { flex: 1; } }
+
+  /* ── REVEAL ON SCROLL ── */
+  .js .reveal { opacity: 0; transform: translateY(24px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
+  .js .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .js .reveal { opacity: 1; transform: none; transition: none; }
+    .card, .card:hover { transition: none; transform: none; }
+    .ribbon-msg.active { animation: none; }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1068px) {
+    .tiles { grid-template-columns: repeat(2, 1fr); }
+    .page-head { grid-template-columns: 1fr; gap: 28px; padding-top: 56px; }
+    .head-aside { justify-self: start; max-width: 560px; }
+    .bento { grid-template-columns: 1fr; }
+    .bento-hero { min-height: 440px; }
+    .bento-side { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 834px) {
+    .gnav-links { display: none; }
+    .gnav-burger { display: block; }
+    .tiles { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .plans { grid-template-columns: 1fr; }
+    .series { grid-template-columns: 1fr; gap: 12px; }
+    .plan.featured { order: -1; }
+    .bento-side { grid-template-columns: 1fr 1fr; }
+    .paddles { display: none; }
+  }
+  @media (max-width: 600px) {
+    body { font-size: 16px; }
+    .ribbon-inner { padding: 12px 44px; font-size: 13px; }
+    .ribbon-arrow.prev { left: 4px; } .ribbon-arrow.next { right: 4px; }
+    .page-head { padding-top: 40px; padding-bottom: 24px; }
+    .head-title { font-size: clamp(42px, 12.5vw, 60px); }
+    .head-sub { font-size: 19px; }
+    .hero-ctas .btn { flex: 1 1 100%; }
+    .stat-chip { min-width: 128px; padding: 16px 12px 14px; }
+    .stat-chip-num { font-size: 32px; }
+    .shelf { padding-top: 48px; }
+    .scroller { gap: 14px; padding-top: 22px; padding-bottom: 26px; }
+    .card-intro { width: 72vw; min-height: 300px; }
+    .card-intro .card-title { font-size: 24px; }
+    .card-intro .tile-val { font-size: 30px !important; }
+    .tiles .tile:last-child:nth-child(odd) { grid-column: 1 / -1; }
+    .tiles .tile-val { font-size: 22px; }
+    .week-card { width: 62vw; min-height: 300px; }
+    .week-r { font-size: 60px; }
+    .sched-card, .testi-card, .feat-card, .lesson-card { width: 80vw; }
+    .result-media { height: 230px; }
+    .card-pad { padding: 26px 24px 28px; }
+    .tile { padding: 18px; }
+    .tile-val { font-size: 26px; }
+    .bento-hero .card-pad { padding: 30px 26px 0; }
+    .bento-big { padding: 30px 26px; }
+    .plan { padding: 32px 24px 26px; }
+    .plan-price { font-size: 54px; }
+    .faq-item summary { font-size: 17px; }
+    .faq-a { font-size: 16px; padding-right: 0; }
+    .final { padding-top: 56px; }
+    .final-card { padding: 72px 22px; border-radius: 22px; }
+    .final-sub { font-size: 18px; }
+    .final .btn { white-space: normal; }
+  }
+</style>
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+
+<!-- GLOBAL NAV -->
+<nav class="gnav" aria-label="Main">
+  <div class="gnav-inner">
+    <a href="#top" class="gnav-logo" aria-label="The Club home">THE <span>CLUB</span></a>
+    <ul class="gnav-links">
+      <li><a href="#proof">Results</a></li>
+      <li><a href="#daily">Daily</a></li>
+      <li><a href="#course">Course</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <div class="gnav-right">
+      <a href="https://whop.com/the-club-994b" class="gnav-cta" target="_blank" rel="noopener">Join Now</a>
+      <button class="gnav-burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="sheet"><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="gnav-sheet" id="sheet">
+  <ul>
+    <li><a href="#proof">Results</a></li>
+    <li><a href="#daily">Daily Schedule</a></li>
+    <li><a href="#included">What's Included</a></li>
+    <li><a href="#course">Course</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <div class="sheet-sub">
+    <div>Get started</div>
+    <a href="https://whop.com/the-club-994b" target="_blank" rel="noopener">Join The Club — £50/mo</a>
+    <a href="https://instagram.com/theclub.trading" target="_blank" rel="noopener">DM "MENTOR" on Instagram</a>
+  </div>
+</div>
+
+<!-- RIBBON -->
+<div class="ribbon" id="top">
+  <div class="ribbon-inner">
+    <button class="ribbon-arrow prev" id="ribPrev" aria-label="Previous message"><svg width="9" height="15" viewBox="0 0 9 15" fill="none"><path d="M7.5 1.5l-6 6 6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <div class="ribbon-msgs" aria-live="polite">
+      <p class="ribbon-msg active"><strong>+21.2R latest week.</strong> 13 of 14 tracked weeks green · 73.3% day win rate. <a href="#proof">See the results ›</a></p>
+      <p class="ribbon-msg">Live sessions daily on the Nasdaq 100 — UK GMT timezone. <a href="#daily">See the daily schedule ›</a></p>
+      <p class="ribbon-msg">Tradesyncer verified · Daily trade recaps · Full mentorship course. <a href="#included">What's included ›</a></p>
+      <p class="ribbon-msg"><strong>UK hours:</strong> live sessions during London and New York · £50/month, cancel anytime.</p>
+      <p class="ribbon-msg">Join The Club today — from £50/month, cancel anytime. <a href="https://whop.com/the-club-994b" target="_blank" rel="noopener">Join now ›</a></p>
+    </div>
+    <button class="ribbon-arrow next" id="ribNext" aria-label="Next message"><svg width="9" height="15" viewBox="0 0 9 15" fill="none"><path d="M1.5 1.5l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  </div>
+</div>
+
+<main>
+
+<!-- PAGE HEADER -->
+<header class="page-head">
+  <div>
+    <div class="head-eyebrow"><span>The Club</span><span>Nasdaq 100</span><span>UK Based</span><span>GMT Timezone</span><span>Tradesyncer Verified</span></div>
+    <h1 class="head-title">This is what consistent <span class="gold">looks like.</span></h1>
+    <div class="hero-ctas">
+      <a href="https://whop.com/the-club-994b" class="btn btn-gold" target="_blank" rel="noopener">Join The Club</a>
+      <a href="#proof" class="btn btn-ghost">See The Stats First</a>
+    </div>
+  </div>
+  <div class="head-aside">
+    <p class="head-sub">Live daily sessions, a structured course and real-time trade breakdowns from a funded UK trader. <span>Every result is public. Every trade is transparent.</span></p>
+    <div class="head-links">
+      <a href="#pricing" class="link-arrow">Compare memberships</a>
+      <a href="#daily" class="link-arrow">What members get daily</a>
+    </div>
+    <p class="head-help">Not sure it's the right fit? <a href="https://instagram.com/theclub.trading" target="_blank" rel="noopener">DM @theclub.trading on Instagram</a> and get an honest answer.</p>
+  </div>
+</header>
+
+<!-- STAT ROW (hero proof strip + stats bar) -->
+<div class="stat-row-wrap">
+  <div class="stat-row" role="list" aria-label="Headline stats">
+    <a href="#proof" class="stat-chip" role="listitem">
+      <div class="stat-chip-num green">+21.2R</div>
+      <div class="stat-chip-label">Latest Week</div>
+      <div class="stat-chip-src">Sep 28 – Oct 2 · Weekly R:R</div>
+    </a>
+    <a href="#proof" class="stat-chip" role="listitem">
+      <div class="stat-chip-num green">13/14</div>
+      <div class="stat-chip-label">Tracked Weeks Green</div>
+      <div class="stat-chip-src">Jun – Oct 2026</div>
+    </a>
+    <a href="#proof" class="stat-chip" role="listitem">
+      <div class="stat-chip-num green">73.3%</div>
+      <div class="stat-chip-label">Day Win Rate</div>
+      <div class="stat-chip-src">55W · 20L all time</div>
+    </a>
+    <a href="#proof" class="stat-chip" role="listitem">
+      <div class="stat-chip-num gold">61%</div>
+      <div class="stat-chip-label">Overall Win Rate</div>
+      <div class="stat-chip-src">611W · 391L</div>
+    </a>
+    <a href="#proof" class="stat-chip" role="listitem">
+      <div class="stat-chip-num gold">2.16</div>
+      <div class="stat-chip-label">Profit Factor</div>
+      <div class="stat-chip-src">All time verified</div>
+    </a>
+    <a href="#daily" class="stat-chip" role="listitem">
+      <div class="stat-chip-num gold">GMT</div>
+      <div class="stat-chip-label">Timezone</div>
+      <div class="stat-chip-src">UK based · London open</div>
+    </a>
+  </div>
+</div>
+
+<!-- PROOF: WEEKLY R:R SHELF -->
+<section class="shelf" id="proof" aria-labelledby="proof-title">
+  <div class="shelf-head reveal">
+    <h2 class="shelf-title" id="proof-title">Week by week. Red weeks included. <span class="muted">Verified results.</span></h2>
+  </div>
+  <div class="scroller" id="weeks">
+    <div class="card card-intro">
+      <div class="card-pad" style="display:flex;flex-direction:column;flex:1;">
+        <div class="card-eyebrow">Verified results</div>
+        <h3 class="card-title">Every tracked week, side by side.</h3>
+        <p class="card-body">June to October 2026, newest first. Flick through — 13 of 14 tracked weeks closed positive, and the losing week is shown too.</p>
+        <div class="intro-foot">
+          <div class="tile-key" style="margin-bottom:4px;">Tracked weeks</div>
+          <div class="tile-val g" style="font-size:44px;">13 / 14 Green</div>
+        </div>
+      </div>
+    </div>
+
+    <article class="card week-card current"><div class="card-pad">
+      <span class="week-badge">Latest Week</span>
+      <div class="card-eyebrow">Sep/Oct 2026</div>
+      <div class="week-dates">Sep 28 – Oct 2</div>
+      <div class="week-r">+21.2R</div><div class="week-cap">Weekly R:R</div>
+    </div></article>
+
+    <article class="card week-card red"><div class="card-pad">
+      <div class="card-eyebrow">September 2026 — Week 4</div>
+      <div class="week-dates">Sep 21 – Sep 25</div>
+      <div class="week-r neg">−3.1R</div><div class="week-cap">Weekly R:R · Losing week</div>
+    </div></article>
+
+    <article class="card week-card"><div class="card-pad">
+      <div class="card-eyebrow">September 2026 — Week 3</div>
+      <div class="week-dates">Sep 14 – Sep 18</div>
+      <div class="week-r">+6.7R</div><div class="week-cap">Weekly R:R</div>
+    </div></article>
+
+    <article class="card week-card"><div class="card-pad">
+      <div class="card-eyebrow">September 2026 — Week 2</div>
+      <div class="week-dates">Sep 7 – Sep 11</div>
+      <div class="week-r">+4.05R</div><div class="week-cap">Weekly R:R</div>
+    </div></article>
+
+    <article class="card week-card"><div class="card-pad">
+      <div class="card-eyebrow">Aug/Sep 2026</div>
+      <div class="week-dates">Aug 31 – Sep 4</div>
+      <div class="week-r">+3.9R</div><div class="week-cap">Weekly R:R</div>
+    </div></article>
+
+    <article class="card week-card"><div class="card-pad">
+      <div class="card-eyebrow">August 2026 — Week 4</div>
+      <div class="week-dates">Aug 24 – Aug 28</div>
+      <div class="week-r">+5.9R</div><div class="week-cap">Weekly R:R</div>
+    </div></article>
+
+    <article class="card week-card"><div class="card-pad">
+      <div class="card-eyebrow">August 2026 — Week 3</div>
+      <div class="week-dates">Aug 17 – Aug 21</div>
+      <div class="week-r">+0.3R</div><div class="week-cap">Weekly R:R</div>
+    </div></article>
+
+    <article class="card week-card"><div class="card-pad">
+      <div class="card-eyebrow">July 2026 — Week 2</div>
+      <div class="week-dates">Jul 13 – Jul 17</div>
+      <div class="week-r">+13.1R</div><div class="week-cap">Weekly R:R</div>
+    </div></article>
+
+    <article class="card week-card"><div class="card-pad">
+      <div class="card-eyebrow">July 2026 — Week 1</div>
+      <div class="week-dates">Jul 6 – Jul 10</div>
+      <div class="week-r">+3.5R</div><div class="week-cap">Weekly R:R</div>
+    </div></article>
+
+    <article class="card week-card"><div class="card-pad">
+      <div class="card-eyebrow">June/July 2026</div>
+      <div class="week-dates">Jun 29 – Jul 3</div>
+      <div class="week-r">+11.1R</div><div class="week-cap">Weekly R:R</div>
+    </div></article>
+
+    <article class="card week-card"><div class="card-pad">
+      <div class="card-eyebrow">June 2026 — Week 4</div>
+      <div class="week-dates">Jun 22 – Jun 26</div>
+      <div class="week-r">+1.9R</div><div class="week-cap">Weekly R:R</div>
+    </div></article>
+
+    <article class="card week-card"><div class="card-pad">
+      <div class="card-eyebrow">June 2026 — Week 3</div>
+      <div class="week-dates">Jun 15 – Jun 19</div>
+      <div class="week-r">+8.1R</div><div class="week-cap">Weekly R:R</div>
+    </div></article>
+
+    <article class="card week-card"><div class="card-pad">
+      <div class="card-eyebrow">June 2026 — Week 2</div>
+      <div class="week-dates">Jun 8 – Jun 12</div>
+      <div class="week-r">+4.1R</div><div class="week-cap">Weekly R:R</div>
+    </div></article>
+
+    <article class="card week-card"><div class="card-pad">
+      <div class="card-eyebrow">June 2026 — Week 1</div>
+      <div class="week-dates">Jun 1 – Jun 5</div>
+      <div class="week-r">+3.2R</div><div class="week-cap">Weekly R:R</div>
+    </div></article>
+  </div>
+  <div class="paddles" data-for="weeks">
+    <button class="paddle prev" aria-label="Previous weeks"><svg viewBox="0 0 14 14" fill="none"><path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <button class="paddle next" aria-label="Next weeks"><svg viewBox="0 0 14 14" fill="none"><path d="M5 2l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  </div>
+
+  <div class="tiles reveal" style="margin-top:28px;">
+    <div class="tile"><div class="tile-key">Tracked Weeks</div><div class="tile-val g">13 / 14 Green</div></div>
+    <div class="tile"><div class="tile-key">Best Week (R:R)</div><div class="tile-val g">+21.2R</div></div>
+    <div class="tile"><div class="tile-key">Total Trades</div><div class="tile-val">353</div></div>
+    <div class="tile"><div class="tile-key">Max Drawdown</div><div class="tile-val">16.3%</div></div>
+    <div class="tile"><div class="tile-key">Profit Factor (Live)</div><div class="tile-val">2.16</div></div>
+    <div class="tile"><div class="tile-key">Tradesyncer Score</div><div class="tile-val">77/100</div></div>
+    <div class="tile"><div class="tile-key">Instrument</div><div class="tile-val">Nasdaq 100</div></div>
+  </div>
+  <p class="fineprint">R:R = return relative to fixed risk per trade. All data sourced from Tradesyncer — third-party verified trading journal. All 14 tracked weeks are shown, winning and losing. No results are shown for Jul 20 – Aug 14. Past performance is not indicative of future results.</p>
+</section>
+
+<!-- TIME-BASED ALGORITHM -->
+
+<!-- DAILY SCHEDULE -->
+<section class="shelf" id="daily" aria-labelledby="daily-title">
+  <div class="shelf-head reveal">
+    <h2 class="shelf-title" id="daily-title">Live. Every single day. <span class="muted">What members get daily.</span></h2>
+  </div>
+  <p class="shelf-lede reveal">This isn't a passive course. Every trading day you get three touchpoints — before the session, during, and after. You never trade blind.</p>
+  <div class="scroller" id="sched">
+    <article class="card sched-card"><div class="card-pad">
+      <div class="sched-step">01</div>
+      <div class="sched-time">Pre-Market</div>
+      <div class="sched-label">Before the London Open · GMT</div>
+      <h3 class="card-title">Daily Market Outlook</h3>
+      <p class="card-body">Before every session — the key Nasdaq 100 levels I'm watching, the directional bias, and what conditions need to be met before I enter. You start every day with a clear plan, not a guess.</p>
+    </div></article>
+    <article class="card sched-card"><div class="card-pad">
+      <div class="sched-step">02</div>
+      <div class="sched-time">Live</div>
+      <div class="sched-label">During the Session</div>
+      <h3 class="card-title">Live Trading Sessions</h3>
+      <p class="card-body">Live trade ideas explained in real time — entry price, stop loss and take profit — shared as I place them. Watch the trades unfold live. Ask questions in the group as it happens. No delays, no after-the-fact calls.</p>
+    </div></article>
+    <article class="card sched-card"><div class="card-pad">
+      <div class="sched-step">03</div>
+      <div class="sched-time">Post-Session</div>
+      <div class="sched-label">End of Day</div>
+      <h3 class="card-title">Daily Trade Recap</h3>
+      <p class="card-body">Every trade broken down — what worked, what didn't, what the chart was telling me at entry and exit. This is where the real learning happens. Not just what I traded, but why.</p>
+    </div></article>
+  </div>
+</section>
+
+<!-- WHAT YOU GET -->
+<section class="shelf" id="included" aria-labelledby="inc-title">
+  <div class="shelf-head reveal">
+    <h2 class="shelf-title" id="inc-title">Built for traders who are serious. <span class="muted">Everything included.</span></h2>
+  </div>
+  <p class="shelf-lede reveal">Every tier includes more than most paid programmes charge separately for.</p>
+  <div class="scroller" id="feats">
+    <article class="card feat-card"><div class="card-pad">
+      <div class="feat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5a7 7 0 0 1 14 0"/><path d="M8.5 12.5a3.5 3.5 0 0 1 7 0"/><circle cx="12" cy="13" r="1.2" fill="currentColor"/><path d="M12 14.5V21"/></svg></div>
+      <h3 class="card-title">Live Trade Breakdowns</h3>
+      <p class="card-body">Entry, stop loss, and take profit posted before I enter. Timed around the London and US opens. GMT-based — no 3am alerts.</p>
+    </div></article>
+    <article class="card feat-card"><div class="card-pad">
+      <div class="feat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18h18"/><path d="M6.5 18a5.5 5.5 0 0 1 11 0"/><path d="M12 5v3M4.6 9.6l2 1.6M19.4 9.6l-2 1.6"/></svg></div>
+      <h3 class="card-title">Daily Market Outlook</h3>
+      <p class="card-body">Pre-session brief every trading day. Key levels, directional bias, and what I'm waiting for. Never start a session without a plan again.</p>
+    </div></article>
+    <article class="card feat-card"><div class="card-pad">
+      <div class="feat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="13" height="12" rx="2.5"/><path d="M16 10.5l5-3v9l-5-3"/></svg></div>
+      <h3 class="card-title">Live Trading Sessions</h3>
+      <p class="card-body">Watch me trade in real time. See the decision-making, the entries, the management. Ask questions as it happens. This is how you actually learn.</p>
+    </div></article>
+    <article class="card feat-card"><div class="card-pad">
+      <div class="feat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2.5"/><path d="M9 4.5V3h6v1.5"/><path d="M8.5 10h7M8.5 13.5h7M8.5 17h4"/></svg></div>
+      <h3 class="card-title">Daily Trade Recaps</h3>
+      <p class="card-body">End-of-day breakdown of every trade — chart markup, entry reasoning, what the exit told me. The recap is where most of the education lives.</p>
+    </div></article>
+    <article class="card feat-card"><div class="card-pad">
+      <div class="feat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16"/><path d="M7 16v-4M11 16V8M15 16v-6M19 16V5"/></svg></div>
+      <h3 class="card-title">Weekly P&amp;L Reviews</h3>
+      <p class="card-body">Every Friday — full Tradesyncer calendar, wins, losses, what I'm adjusting for next week. Total transparency, every week without fail.</p>
+    </div></article>
+    <article class="card feat-card"><div class="card-pad">
+      <div class="feat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 9.5L12 5l9.5 4.5L12 14z"/><path d="M6.5 11.5V16c0 1.4 2.5 3 5.5 3s5.5-1.6 5.5-3v-4.5"/><path d="M21.5 9.5V15"/></svg></div>
+      <h3 class="card-title">Full Mentorship Course</h3>
+      <p class="card-body">Complete structured course covering Nasdaq 100 setups, risk management, psychology, and execution. Not generic trading theory — the exact framework I use every day.</p>
+    </div></article>
+    <article class="card feat-card"><div class="card-pad">
+      <div class="feat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a7.5 7.5 0 0 1-11 6.6L4 20l1.4-4.4A7.5 7.5 0 1 1 20 12z"/><path d="M9 11h.01M12.5 11h.01M16 11h.01" stroke-width="2.4"/></svg></div>
+      <h3 class="card-title">Private Community</h3>
+      <p class="card-body">Active group of traders on the same journey. Share setups, ask questions, hold each other accountable. No spam, no noise.</p>
+    </div></article>
+    <article class="card feat-card"><div class="card-pad">
+      <div class="feat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg></div>
+      <h3 class="card-title">UK GMT Coverage</h3>
+      <p class="card-body">Built for traders in the UK and Europe. Live sessions timed around hours that actually work for your timezone — not the US schedule.</p>
+    </div></article>
+  </div>
+  <div class="paddles" data-for="feats">
+    <button class="paddle prev" aria-label="Previous features"><svg viewBox="0 0 14 14" fill="none"><path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <button class="paddle next" aria-label="Next features"><svg viewBox="0 0 14 14" fill="none"><path d="M5 2l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  </div>
+</section>
+
+<!-- MENTORSHIP COURSE TEASER (thumbnails are blurred in the image file itself) -->
+<section class="shelf" id="course" aria-labelledby="course-title">
+  <div class="shelf-head reveal">
+    <h2 class="shelf-title" id="course-title">Inside the mentorship course. <span class="muted">Three series. 20+ video lessons.</span></h2>
+  </div>
+  <p class="shelf-lede reveal">Recorded lessons on live Nasdaq 100 charts, organised into three series. Here’s a look through the keyhole — members get the full library.</p>
+  <div class="series reveal">
+    <div class="tile series-tile">
+      <div class="series-num">01</div>
+      <div class="series-name">Smart Money Concepts</div>
+      <p class="card-body">How price is engineered — liquidity, premium and discount arrays, SMT divergence, inverse FVGs and consequential encroachment.</p>
+    </div>
+    <div class="tile series-tile">
+      <div class="series-num">02</div>
+      <div class="series-name">Fundamental Concepts</div>
+      <p class="card-body">How fundamental conditions shift the odds — reading high- versus low-probability days before you put a trade on.</p>
+    </div>
+    <div class="tile series-tile">
+      <div class="series-num">03</div>
+      <div class="series-name">Market Theory</div>
+      <p class="card-body">The models behind every trade — the HM Model and the 9:30 Judas Swing, taught step by step and then shown on live examples.</p>
+    </div>
+  </div>
+  <div class="scroller" id="lessons">
+    <article class="card lesson-card">
+      <div class="lesson-media"><img src="data:image/webp;base64,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" alt="" width="640" loading="lazy" decoding="async"><span class="lock" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Members only</span></div>
+      <div class="card-pad">
+        <div class="card-eyebrow">Market Theory</div>
+        <h3 class="card-title">The HM Model</h3>
+        <p class="card-body">The full higher-timeframe to lower-timeframe framework — from draw on liquidity to entry, stop and target.</p>
+      </div>
+    </article>
+    <article class="card lesson-card">
+      <div class="lesson-media"><img src="data:image/webp;base64,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" alt="" width="640" loading="lazy" decoding="async"><span class="lock" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Members only</span></div>
+      <div class="card-pad">
+        <div class="card-eyebrow">Market Theory</div>
+        <h3 class="card-title">The Judas Swing</h3>
+        <p class="card-body">Part one breaks down the 9:30 manipulation. Part two walks through it on a live example.</p>
+      </div>
+    </article>
+    <article class="card lesson-card">
+      <div class="lesson-media"><img src="data:image/webp;base64,UklGRsgFAABXRUJQVlA4ILwFAACQYACdASqAAmIBPp1MnkywtC0loxv5IoATiWlu/FuZbsu513UKnbib6xpnk8SmE3aO+A+pvX0elhqBSUdEfzJtT8JT6JMV1GiyyfiorEiotnlgUiTLwAv8MLUnDx0Aawyl4eLUlgmRUXRVXI24hbih9yhZFR0CoV1cGpbIqOgVAXg+F0W7dzHw7C4NIWRdMwaQxF6LdzKlT3wKNqR+jhDgeRITsnyzNnFpUnSSHOjoJCP6tUKIeLZVXKzOFtMThNpLqCQjlEzyzYfXwRCLfSNjNGqySXPbVn+95xNRdGF4Jg7GYNLd1OBfJYgooJA1ESAFKKnvqOSb27Bsm4Ap7a2cHWdQ2MgO71vetiUTpsOxxIqLooQ5R0AjiYSRGToj7p11geyhuN1rG62/PYPflCfjz6giVCBlYuBuGvMsMg1IaIW43WsbrWN1rG61jvIU/SXO4qDOTXp04aIW4ju4NELcbsEun6QjcTXIypLG61jdalL+LyNFM40dm7mIB5kCb0ORcmtY7yGIlFTRqeFya1jdapBy9aGcWbjLeYTHmDCyS7cZys2EteQEljdbMVsxrq/K1Y3WsbrWL1wqUjPSvZOQ3oId3F/bUQg13UAR1e2fUEPrAiUAEXrzyovjq1/42OA21XF3AcvsjSNJ9kIRIg+JxJHdoMV57KdBJha7gOX2L3D/7uRjdEP4r3rXlZ4EKz4ClTsu1ZPTpw0QtxuxlNnLBRbkdQBtcNELrjhdxb2YuQGeiKNELcbrWN1rG61jdaxvVm9dX5axWTWsbrWN1rG61jdaxuwS7BQT7ePdLhohbjdaxutY3WsbrZitmM3oP/1axutY3WsbrWN1rG61nSWdzV+QANxutY3WsbrWN1rG61jvIYkOEdsDmDa4aIW43WsbrWN1rG9Wb11LoAreRwwnRD6gh9QQ+oIfUEPqCH7yfwUG2e6jrPzhWPFLyTH9mnA2zrJkSdNgSZoKRr3pvjwo/lUE1nfX+YEcsdi7HMpX7IAFUdFwbeyqFem8hYeZbmiJuHRXTZ4TSSHe4AqIAP724+hSubIIZ/mPbfA4DlkxmotWcEOHxaY97i4ci6wGOHoPCH12dxDm4z7VNDwuwW70g5YtzpXLXZUE0WrKlODNh9gLcp/a3BJ1vtyVGlPnS7J5nHGLQ5NhlGBgAd0Iq5pG2oaVAMVyj7RLM5lRgTEtgmt68mNUpU7vQXK8JhGlATXD81qTCqHzprt+5gW8l5BSnjcNkZfAm0M5AfTzJZFgWejKbSUjkIxdotFZJOqR1yW4q5Yb6HtHqeUJHy27hLluwuV2gMFAu2hSJT+AAfNTkO1IgEg80DAZstyWKDkXK37qlszz08pe83l63hx9DenboDo3Jdg6DySUHJtdMtgqGjw6BeTzUtQ/mVbk0ABPeHHe11GFiOBGNrlM6hWCRKKIlCf+W7vgd/0jpZTximp4fxmsEG0T5hAWerC0TTz3RyXCg91SyjICHbndWyttQaLgc4/56xamW+L7fQiKn0BStUEMkSBd2+rjm7J5zNzGMNtg1N+oM0wAnQVngg8/drkM2RDC1ylwF2KVr0MzZbXAGPfaGNW9jz6K4EYfaxHOZjykVMGqgAAC4/Na+y0wAsMpfhhq94aBldTQEmF9PLLkrQ8raYYGQWnH8RCuhldZPpgytOlg8Jc7oSE9/EOQUUUg0Oy17FH49+a6gNpJkNoA2ouOHWZTONSBGYmWMLTDxkTtPquZsYqHj8WRDu7oPk3/rOKL9BGW9BfYDRWWBpID37DkdGL6vigIUZ8dvnQAlpwYxIzBV5RwA8jriXAjTuAHf9OFrtVfNDAE5b9c5wWADd909kWOvHWRQFC/ChUWsUIpbFVDBVF+f9za1N+GkeJreDHlLEaohZhkePif40I7P/HPTiEg9O2AAD2CZmjAJ5j3CjhM5jNhdWAXBT/I4Jv4PpKNCdjFHaJgAAAA" alt="" width="640" loading="lazy" decoding="async"><span class="lock" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Members only</span></div>
+      <div class="card-pad">
+        <div class="card-eyebrow">Fundamental Concepts</div>
+        <h3 class="card-title">Lesson 19: Fundamental Condition Impact</h3>
+        <p class="card-body">High versus low probability conditions, and how fundamentals change which setups are worth taking.</p>
+      </div>
+    </article>
+    <article class="card lesson-card">
+      <div class="lesson-media"><img src="data:image/webp;base64,UklGRqQEAABXRUJQVlA4IJgEAADwRQCdASqAAuwAPp1Onky0tK0lo56J4pATiWlu+DpMDE9wiM4vPdrcqj89aqn/iDxdIjzwtYz0KDxqSp60bXaV1c5ChD9fEnTa/DXIFmszOGOVg7M5Kh7QoX+o4Y4fQ5e5u4yDXyx5/7hikWfHeqC46p8FVKaLrMGKYmmyEswz9OYLjRR1iJEmqopTP05guNE02QiKO1Z70Wir+6tRT9brRdz7iAkPAIkhMrmeVhRdbOPW0I1tCTO6QzH3SsSz9jh0bkEbUDGa6w2rKVbOQzOU6W4fu5f8GTVQc6IH8ZK/5UeBEEafW17AekdRDI9RmRB363EPeqyr4zXwRqIKsJA75XaYMRWssTqcYyM5mAckCKqqqqqqqqqqqqqquMZueQ5HORznJeE7u7u7u7u7u7u7u7u7vALTzxDtt6saqqqqqqqqqqqqqqqqqyW8Afh5pr5tFi/FVVVVVVVVVVVVVVxjNzr3RZeK2MzMzMzMzMSeVYzvnYWwZZrToozM+bRzRk8v2rd3d3d3d3TquvkCh30AwxACAqxkoo9A0/LV8VprfJX9E6kXjxZpcWJu7u7u7R2y/5x7ZtJrqllvtRAcbUyRkLRRmZmd0K+aKO/0aOmKrgRBx/9rFqzi9pGpp7uE0EppTDuOOtSPknakovYlBNQHgzaD2+L0a1LwZ9kCsacbCI4Xd3d3d3d3hF9X1MQR/W06r3d3d3ejl2Gve3BI9AdMokRwu7u7u7u7u7u7u7u7u7wC09KQcb4AAP7+CwDkvOBL5yhsUWUT/SH73W8cK/toJtsVcXwqy23gfSrvQgPbbwL6985j3fkynfqFO5gxb+5Wz4us1je0E1amCXwv60yOJzwoDSjc0bSj0pMA2wL1bzmqUmvy5sX1u9B340EbEmVv5aLl5xUCmPrbEQIsNO4hZ3ezd7/zByf2tycG3D6C5ICd7Y1KhojlXfqBc/AlcS4ijYqwK/ZcpE38rWTgASM3XS0xM8DQPs2v9rkMJMfb5umetQqZnAOMxAh/ZHRNV94llGozk+Lz1lIN1K2Vil7vZzM0bDcX3QXoZPkuobl0lI46jPu7se7xnk5dfGpfTX3Y//sk6Db6Nw9y9CnvPDuYewXblrldU3Y1uTCm6jcmHh62kRLjuQXK0UzmK5nCBTqqqQf8jFn+ENqj0gEkbmIQ1XyjFSGknkmR8nHWXy2sW2R2EOFfqJhJSHWcDltZutOMAO8unZQ8gkY5JVOhb/6fgazse5pzAhHwCVjITtJMICZlvsPbenXae1ripAcERaV3zlL4uSqBAAANJBMuVMwgzwtvwewLRTLZz0oIAAB/e4eH+JCrLYEMrgAGgPluWNAABZbH00HQLYgAB6Lsg7dOBNBTxAeLKH/pPAiRzuuuJ1B7p9/HREbk9s3Go8JOYQEYLC5FF/EI+ShBgX3bftDYj/VLxBMDrJDJnnVdEnIjjeCxYBKzzCmFOukFa3lZWEe3QHsnT/hcbfYcf0RaHPWWtLL/Yfx9vlK933fW8GGikhNkaQdcS2if7yMIBtd4IGh1IHrrd1Lp7Nz1IB/NjgAA8hynNrV2AAA=" alt="" width="640" loading="lazy" decoding="async"><span class="lock" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Members only</span></div>
+      <div class="card-pad">
+        <div class="card-eyebrow">Smart Money Concepts</div>
+        <h3 class="card-title">Lesson 14: Consequential Encroachment</h3>
+        <p class="card-body">Why the midpoint of an imbalance matters, and how to use it for entries.</p>
+      </div>
+    </article>
+    <article class="card lesson-card">
+      <div class="lesson-media"><img src="data:image/webp;base64,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" alt="" width="640" loading="lazy" decoding="async"><span class="lock" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Members only</span></div>
+      <div class="card-pad">
+        <div class="card-eyebrow">Execution</div>
+        <h3 class="card-title">Lesson 20: How to Calculate Contracts</h3>
+        <p class="card-body">Position sizing for futures — so every trade risks exactly what you planned.</p>
+      </div>
+    </article>
+    <article class="card lesson-card">
+      <div class="lesson-media"><div class="lesson-blank"></div><span class="lock" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Members only</span></div>
+      <div class="card-pad">
+        <div class="card-eyebrow">Members only</div>
+        <h3 class="card-title">Lesson 13: The Holy Grail</h3>
+        <p class="card-body">You’ll have to join to find out.</p>
+      </div>
+    </article>
+    <article class="card lesson-card lesson-cta">
+      <div class="card-pad">
+        <div class="card-eyebrow">Full library</div>
+        <h3 class="card-title">Unlock every lesson.</h3>
+        <p class="card-body">The complete course is included with every membership — Membership and 1:1 Mentorship.</p>
+        <a href="https://whop.com/the-club-994b" class="btn btn-gold btn-sm" target="_blank" rel="noopener" style="margin-top:22px;">Join The Club — £50/mo</a>
+      </div>
+    </article>
+  </div>
+  <div class="paddles" data-for="lessons">
+    <button class="paddle prev" aria-label="Previous lessons"><svg viewBox="0 0 14 14" fill="none"><path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <button class="paddle next" aria-label="Next lessons"><svg viewBox="0 0 14 14" fill="none"><path d="M5 2l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  </div>
+</section>
+
+<!-- TESTIMONIALS (real member posts from The Club Discord #testimonials, shortened) -->
+
+<!-- MEMBER RESULTS (screenshots from The Club Discord #profits) -->
+
+<!-- PRICING -->
+<section class="shelf" id="pricing" aria-labelledby="price-title">
+  <div class="shelf-head reveal">
+    <h2 class="shelf-title" id="price-title">Two ways in. <span class="muted">Membership.</span></h2>
+  </div>
+  <p class="shelf-lede reveal">Membership or full 1:1 mentorship. Both include the daily sessions, live trade breakdowns and the course.</p>
+  <div class="plans">
+    <div class="card plan reveal">
+      <div class="plan-name">The Club — Membership</div>
+      <div class="plan-price">£50</div>
+      <div class="plan-period">per month · cancel anytime</div>
+      <ul class="plan-features">
+        <li>Daily pre-market outlook — levels, bias, plan</li>
+        <li>Live trade breakdowns — entry, SL, TP</li>
+        <li>Live trading sessions every trading day</li>
+        <li>Daily trade recaps with chart breakdowns</li>
+        <li>Weekly P&amp;L review every Friday</li>
+        <li>Full mentorship course included</li>
+        <li>Access to private community group</li>
+        <li>GMT-timed — London &amp; US open focus</li>
+      </ul>
+      <div class="plan-cta-wrap">
+        <a href="https://whop.com/the-club-994b" class="btn btn-gold btn-block" target="_blank" rel="noopener">Join The Club — £50/mo</a>
+      </div>
+    </div>
+
+    <div class="card plan featured reveal">
+      <span class="plan-badge">Maximum Accountability</span>
+      <div class="plan-name">The Club — 1:1 Mentorship</div>
+      <div class="plan-price">£150</div>
+      <div class="plan-period">per month · limited spots</div>
+      <div class="plan-includes">Everything in Membership, plus:</div>
+      <ul class="plan-features">
+        <li>Weekly 1:1 session directly with Max</li>
+        <li>Personalised trading plan built around your account size, schedule, and risk tolerance</li>
+        <li>Your own trades reviewed and marked up weekly</li>
+        <li>Strategy, psychology, and execution coaching tailored to you</li>
+        <li>Direct WhatsApp access for questions between sessions</li>
+        <li>Held accountable to your specific goals every week</li>
+      </ul>
+      <div class="plan-cta-wrap">
+        <p class="plan-note">Spots are limited each month. DM on Instagram to apply — I'll be honest about whether this is the right fit for where you are.</p>
+        <a href="https://instagram.com/theclub.trading" class="btn btn-ghost btn-block" target="_blank" rel="noopener">DM "MENTOR" to Apply</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="shelf" id="faq" aria-labelledby="faq-title">
+  <div class="shelf-head reveal">
+    <h2 class="shelf-title" id="faq-title">Before you join. <span class="muted">Questions.</span></h2>
+  </div>
+  <div class="faq reveal">
+    <details class="faq-item" open>
+      <summary>What do I get every single day?<span class="faq-plus" aria-hidden="true"></span></summary>
+      <p class="faq-a">Every trading day: a pre-market outlook with key levels and bias before the session opens, live trade breakdowns as I place trades, and a post-session trade recap breaking down every entry and exit. On top of that, a full weekly P&amp;L review every Friday.</p>
+    </details>
+    <details class="faq-item">
+      <summary>What instrument do you trade?<span class="faq-plus" aria-hidden="true"></span></summary>
+      <p class="faq-a">The Nasdaq 100 — traded through MNQ, the Micro E-mini Nasdaq 100 futures contract. All sessions and course content are Nasdaq 100-specific. The mentorship course covers the full Nasdaq 100 framework including risk management, setup criteria, and execution.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Are your results verified?<span class="faq-plus" aria-hidden="true"></span></summary>
+      <p class="faq-a">Yes. Every live-trading stat on this page is pulled from Tradesyncer — a third-party trading journal connected directly to the live account. Winning and losing trades included. The full data is also publicly available in the Instagram highlights at @theclub.trading.</p>
+    </details>
+    <details class="faq-item">
+      <summary>What timezone are the sessions?<span class="faq-plus" aria-hidden="true"></span></summary>
+      <p class="faq-a">UK time. UK-based, so everything is timed around the London open (8am UK time) and the US open (2:30pm UK time for most of the year) — the two highest-probability sessions on the Nasdaq 100. No 3am alerts.</p>
+    </details>
+    <details class="faq-item">
+      <summary>What's included in the mentorship course?<span class="faq-plus" aria-hidden="true"></span></summary>
+      <p class="faq-a">The full course covers Nasdaq 100 market structure, the exact setup criteria used in every trade, risk management framework, trading psychology and discipline, and execution process from pre-market to close. It's the complete system — not isolated modules.</p>
+    </details>
+    <details class="faq-item">
+      <summary>What's the difference between Membership and 1:1 Mentorship?<span class="faq-plus" aria-hidden="true"></span></summary>
+      <p class="faq-a">The Club Membership (£50/mo) gives you everything — daily outlook, live sessions, trade breakdowns, recaps, course, and community. The Club 1:1 Mentorship (£150/mo) adds direct weekly coaching with Max, your own trades reviewed personally, a plan built around your specific situation, and direct WhatsApp access. DM "MENTOR" on Instagram to apply.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Can I cancel anytime?<span class="faq-plus" aria-hidden="true"></span></summary>
+      <p class="faq-a">Yes. No contracts, no lock-ins. Cancel directly through Whop in one click. Membership is month-to-month. 1:1 spots are reviewed monthly.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Is this suitable for beginners?<span class="faq-plus" aria-hidden="true"></span></summary>
+      <p class="faq-a">The course starts from the foundations, so beginners can follow. That said, if you're completely new to futures, DM on Instagram first and I'll tell you honestly whether now is the right time or if there's groundwork to lay first.</p>
+    </details>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final" aria-labelledby="final-title">
+  <div class="final-card reveal">
+    <h2 class="final-title" id="final-title">Stop watching.<br><span class="grad-gold">Start trading.</span></h2>
+    <p class="final-sub">Daily sessions. Live trade breakdowns. Full course. A real trader. Everything you need to trade the Nasdaq 100 with conviction — for £50 a month.</p>
+    <a href="https://whop.com/the-club-994b" class="btn btn-gold" target="_blank" rel="noopener" style="font-size:18px;padding:17px 34px;">Join The Club — £50/mo</a>
+    <div class="final-note">The Club 1:1 Mentorship available at £150/mo · <a href="https://instagram.com/theclub.trading" target="_blank" rel="noopener">DM "MENTOR" to apply</a></div>
+  </div>
+</section>
+
+<!-- QUICK LINKS -->
+<section class="quick" aria-labelledby="quick-title">
+  <h2 class="quick-title" id="quick-title">Quick Links</h2>
+  <ul class="quick-list">
+    <li><a href="#proof">Weekly results</a></li>
+    <li><a href="#daily">Daily schedule</a></li>
+    <li><a href="#course">Mentorship course</a></li>
+    <li><a href="#pricing">Compare memberships</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="https://instagram.com/theclub.trading" target="_blank" rel="noopener">Instagram @theclub.trading</a></li>
+    <li><a href="https://whop.com/the-club-994b" target="_blank" rel="noopener">Join on Whop</a></li>
+  </ul>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot">
+    <p>Trading involves risk. Past performance is not indicative of future results. All statistics verified via Tradesyncer.</p>
+    <p>Futures trading carries a substantial risk of loss and is not suitable for everyone — only trade with money you can afford to lose. All content and mentorship are for educational purposes only and are not financial advice. Individual results vary; member testimonials describe personal experiences and are not a guarantee of future results. Backtested figures are hypothetical.</p>
+    <hr class="foot-rule">
+    <div class="foot-bar">
+      <div class="foot-logo">THE <span>CLUB</span></div>
+      <div class="foot-links">
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="https://instagram.com/theclub.trading" target="_blank" rel="noopener">@theclub.trading</a>
+      </div>
+      <div>© <span id="yr">2026</span> The Club. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+
+<!-- COOKIE CONSENT (stays hidden unless META_PIXEL_ID is set in the script below) -->
+<div class="consent" id="consent" role="dialog" aria-live="polite" aria-label="Cookie consent">
+  <p>We use cookies to measure which ads bring people to this page. Nothing loads unless you accept.</p>
+  <div class="consent-btns">
+    <button class="btn btn-ghost btn-sm" id="consentNo">Decline</button>
+    <button class="btn btn-gold btn-sm" id="consentYes">Accept</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  /* Mobile menu */
+  var burger = document.getElementById('burger');
+  var sheet = document.getElementById('sheet');
+  function setMenu(open){
+    document.body.classList.toggle('menu-open', open);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  burger.addEventListener('click', function(){ setMenu(!document.body.classList.contains('menu-open')); });
+  sheet.addEventListener('click', function(e){ if (e.target.closest('a')) setMenu(false); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') setMenu(false); });
+
+  /* Ribbon */
+  var msgs = document.querySelectorAll('.ribbon-msg');
+  var ri = 0, timer;
+  function showMsg(i){
+    msgs[ri].classList.remove('active');
+    ri = (i + msgs.length) % msgs.length;
+    msgs[ri].classList.add('active');
+  }
+  function autoplay(){ clearInterval(timer); timer = setInterval(function(){ showMsg(ri + 1); }, 5000); }
+  document.getElementById('ribPrev').addEventListener('click', function(){ showMsg(ri - 1); autoplay(); });
+  document.getElementById('ribNext').addEventListener('click', function(){ showMsg(ri + 1); autoplay(); });
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) autoplay();
+
+  /* Shelves: paddles + start position */
+  document.querySelectorAll('.paddles').forEach(function(p){
+    var sc = document.getElementById(p.getAttribute('data-for'));
+    if (!sc) return;
+    var prev = p.querySelector('.prev'), next = p.querySelector('.next');
+    function step(){ return Math.max(280, sc.clientWidth * 0.8); }
+    function update(){
+      prev.disabled = sc.scrollLeft <= 4;
+      next.disabled = sc.scrollLeft + sc.clientWidth >= sc.scrollWidth - 4;
+    }
+    prev.addEventListener('click', function(){ sc.scrollBy({ left: -step(), behavior: 'smooth' }); });
+    next.addEventListener('click', function(){ sc.scrollBy({ left: step(), behavior: 'smooth' }); });
+    sc.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  });
+  /* Reveal on scroll */
+  var els = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    els.forEach(function(el){ io.observe(el); });
+  } else {
+    els.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* ── META PIXEL ──
+     Paste your Pixel ID between the quotes to switch tracking on.
+     UK rules (PECR/GDPR) need consent first, so the pixel only loads after "Accept".
+     Events: PageView on load, InitiateCheckout on any Whop link, Contact on any Instagram link. */
+  var META_PIXEL_ID = '1229395292996221';
+  var CONSENT_KEY = 'tc_consent_v1';
+  function getConsent(){ try { return localStorage.getItem(CONSENT_KEY); } catch(e) { return null; } }
+  function setConsent(v){ try { localStorage.setItem(CONSENT_KEY, v); } catch(e) {} }
+  function loadPixel(){
+    if (window.fbq) return;
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', META_PIXEL_ID);
+    fbq('track', 'PageView');
+  }
+  if (META_PIXEL_ID) {
+    var consentEl = document.getElementById('consent');
+    var c = getConsent();
+    if (c === 'yes') loadPixel();
+    else if (c !== 'no') consentEl.classList.add('show');
+    document.getElementById('consentYes').addEventListener('click', function(){ setConsent('yes'); consentEl.classList.remove('show'); loadPixel(); });
+    document.getElementById('consentNo').addEventListener('click', function(){ setConsent('no'); consentEl.classList.remove('show'); });
+    document.addEventListener('click', function(e){
+      var a = e.target.closest('a[href]'); if (!a || !window.fbq) return;
+      if (a.href.indexOf('whop.com') > -1) fbq('track', 'InitiateCheckout', { currency: 'GBP', value: 50 });
+      else if (a.href.indexOf('instagram.com') > -1) fbq('track', 'Contact');
+    });
+  }
+
+  /* Pass ad tracking parameters (utm_*, fbclid) through to Whop checkout links,
+     so sales can be attributed to the ad/creative that drove them. */
+  try {
+    var qp = new URLSearchParams(location.search), keep = new URLSearchParams();
+    qp.forEach(function(v,k){ if (/^utm_|^fbclid$/.test(k)) keep.set(k,v); });
+    if ([...keep.keys()].length) {
+      document.querySelectorAll('a[href*="whop.com"]').forEach(function(a){
+        var u = new URL(a.href); keep.forEach(function(v,k){ u.searchParams.set(k,v); }); a.href = u.toString();
+      });
+    }
+  } catch(e) {}
+
+  document.getElementById('yr').textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
